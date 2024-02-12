@@ -151,7 +151,7 @@ exports.deleteUser = (req,res,next)=>{
     }).then(user=>{
         if(!userid){
             return res.status(400).json({
-                status:"success",
+                status:"failure",
                 message:`There is no employee with id ${userid}`
             })
         }
