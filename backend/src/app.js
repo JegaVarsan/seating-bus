@@ -6,6 +6,10 @@ const authRoute = require('./routes/auth.route');
 
 const adminRoute = require('./routes/admin.route')
 
+const bookSeatRoute = require('./routes/book-seat.route');
+
+const seat_info_route= require('./routes/seats_info.route')
+
 const { httpLogStream } = require('./utils/logger');
 
 //Database
@@ -45,6 +49,9 @@ next();
 
 app.use('/admin',adminRoute)
 app.use('/api/auth', authRoute);
+app.use('/seats_info',seat_info_route);
+app.use(bookSeatRoute);
+
 
 app.get('/', (req, res) => {
     res.status(200).send({

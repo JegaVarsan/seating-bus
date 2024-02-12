@@ -158,7 +158,7 @@ const UserManagementPage = () => {
   {users?users.map((user) => (
     <tr key={user.id}>
       <td>{user.id}</td>
-      <td>{user.firstname}</td>
+      <td>{user.associate_name}</td>
       <td>{user.lastname}</td>
       <td>{user.email}</td>
       <td>{user.role}</td>

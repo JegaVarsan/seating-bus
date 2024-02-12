@@ -37,7 +37,7 @@ exports.signin = (req, res) => {
         }
       })
         .then((data) => {
-          console.log("DATA" + data);
+          console.log(data);
           if (!data) {
             return res.status(400).json({
                 status:"Failure",

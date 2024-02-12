@@ -5,3 +5,4 @@ const seq = new Sequelize('busdb', 'root', 'P2pug8m8Kaur', {
   host: 'localhost'
 });
 module.exports = seq;
+
