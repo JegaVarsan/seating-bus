@@ -8,7 +8,7 @@ const User = sequelize.define('user',{
         autoIncrement: true,
     },
     associate_id:{
-        type:Sequelize.INTEGER,
+        type:Sequelize.STRING,
         allowNull: false,
         primaryKey:true,
         unique: true,
@@ -21,6 +21,7 @@ const User = sequelize.define('user',{
         unique: true,
     },
     password:Sequelize.STRING,
+    mobile_no:Sequelize.STRING,
     manager_id:Sequelize.STRING,
     manager_name:Sequelize.STRING,
     manager_email:Sequelize.STRING,

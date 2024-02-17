@@ -43,10 +43,11 @@
     font-size: 0.9em;
     width: 100%;
     border-radius: 5px 5px 0 0;
+    background-color: white;
     overflow: scroll;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     cursor: pointer;
-    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
   .content-table thead tr {
@@ -79,8 +80,7 @@
   }
   
   tr:nth-child(even) {
-    background-color: #d4fce90e;
-    font-weight: bold;
+    background-color: #10e17c0e;
     color: #009879;
   }
   
@@ -97,42 +97,86 @@
     transform: scaleX(1.02);
   } */
   
+
+  .action-column {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Adjust the gap between the link and button */
+  }
   
-  
-  button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: #fff;
+  .action-column button,
+  .action-column a {
+    padding: 3px 5px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-right: 10px;
   }
   
-  button:hover {
-    background-color: rgb(14, 109, 80);
-    color:white;
+  .action-column a {
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
   }
+  
+  .action-column a:hover {
+    background-color: #0056b3;
+  }
+  
+  .action-column button {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  .action-column button:hover {
+    background-color: #c82333;
+  }
+  
   
   .delete-confirmation {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
+    background-color: #ffffff;
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    animation: slideDown 0.5s ease forwards;
+  }
+  
+  @keyframes slideDown {
+    0% {
+      transform: translate(-50%, -100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
   }
   
   .delete-confirmation p {
-    margin: 0 0 10px;
+    margin: 0 0 20px;
+    font-size: 18px;
   }
   
   .delete-confirmation button {
     margin-right: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #17529e;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    justify-content: space-evenly;
+    transition: background-color 0.3s ease;
   }
+  
+  .delete-confirmation button:hover {
+    background-color: #ff0000;
+  }
+  
   
   .pwd-td {
     text-align: center;
@@ -192,3 +236,18 @@
     background-color: rgb(170, 187, 17);
   }
   
+  button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+  }
+  
+  button:hover {
+    background-color: #c82333;
+    color: white;
+  }

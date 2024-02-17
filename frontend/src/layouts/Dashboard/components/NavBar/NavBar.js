@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: "100%",
     overflowY: "auto",
+    // backgroundColor:"rgb(66,75,83)"
   },
   list: {
     width: 250,
@@ -30,10 +31,11 @@ const useStyles = makeStyles((theme) => ({
   },
   listItem: {
     transition: "background-color 0.3s, box-shadow 0.3s",
+    color:"black",
   },
   activeListItem: {
     backgroundColor: "rgb(113, 47, 145)",
-    color: "#FFFFFF", // Set text color to white for active items
+    color:"white",
   },
   
   listItemHover: {

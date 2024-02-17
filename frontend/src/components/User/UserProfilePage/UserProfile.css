@@ -1,0 +1,261 @@
+.userprofile-div {
+    /* background-color: #eb0a0a; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    top: 5%;
+}
+
+@media (max-width: 991px) {
+    .div {
+        padding: 0 20px;
+    }
+}
+
+.div-2 {
+    border-radius: 30px;
+    background: linear-gradient(180deg,
+    #a04be3 0%,
+    rgba(170, 79, 218, 0.66) 31.17%,
+    rgba(175, 81, 214, 0.52) 44.66%,
+    rgba(175, 81, 214, 0.52) 44.67%,
+    rgba(179, 82, 210, 0.37) 58.17%,
+    rgba(183, 84, 207, 0.26) 68.67%,
+    rgba(160, 75, 227, 0.65) 98.65%,
+    rgba(160, 75, 227, 0.54) 98.67%);
+    width: 738px;
+    max-width: 100%;
+    /* margin: 152px 0 0 65px; */
+    padding: 50px 80px;
+    position: relative;
+    left: 23%;
+}
+
+@media (max-width: 991px) {
+    .div-2 {
+        margin-top: 40px;
+        padding: 0 20px;
+    }
+}
+
+.div-3 {
+    gap: 20px;
+    display: flex;
+}
+
+@media (max-width: 991px) {
+    .div-3 {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0px;
+    }
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 50%;
+    margin-left: 0px;
+}
+
+@media (max-width: 991px) {
+    .column {
+        width: 100%;
+    }
+}
+
+.div-4 {
+    border-radius: 20px;
+    background-color: rgba(102, 51, 153, 1);
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    font-size: 12px;
+    color: #fff;
+    font-weight: 400;
+    width: 100%;
+    margin: auto 0;
+    padding: 46px 35px;
+}
+
+@media (max-width: 991px) {
+    .div-4 {
+        margin-top: 40px;
+        padding: 0 20px;
+    }
+}
+
+.img {
+    aspect-ratio: 1.02;
+    object-fit: auto;
+    object-position: center;
+    width: 114px;
+    border-radius: 50%;
+    align-self: center;
+    max-width: 100%;
+}
+
+.div-5 {
+    font-family: Inter, sans-serif;
+    margin-top: 42px;
+}
+
+@media (max-width: 991px) {
+    .div-5 {
+        margin-top: 40px;
+    }
+}
+/* 
+.div-6 {
+    border-radius: 30px;
+    background-color: #fff;
+    margin-top: 19px;
+    height: 32px;
+} */
+
+.div-7 {
+    font-family: Inter, sans-serif;
+    margin-top: 31px;
+}
+
+/* .div-8 {
+    border-radius: 30px;
+    background-color: #fff;
+    margin-top: 16px;
+    height: 32px;
+} */
+
+.column-2 {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 50%;
+    margin-left: 20px;
+}
+
+@media (max-width: 991px) {
+    .column-2 {
+        width: 100%;
+    }
+}
+
+.div-9 {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    font-size: 12px;
+    color: #fff;
+    font-weight: 400;
+    margin: auto 0;
+}
+
+@media (max-width: 991px) {
+    .div-9 {
+        margin-top: 40px;
+    }
+}
+
+.div-10 {
+    border-radius: 20px;
+    background-color: #639;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 26px;
+}
+
+@media (max-width: 991px) {
+    .div-10 {
+        padding: 0 20px;
+    }
+}
+
+.div-11 {
+    font-family: Inter, sans-serif;
+}
+
+/* .div-12 {
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 1);
+    width: 181px;
+    height: 32px;
+    margin: 12px 0 0 13px;
+} */
+
+@media (max-width: 991px) {
+    .div-12 {
+        margin-left: 10px;
+    }
+}
+
+.div-13 {
+    font-family: Inter, sans-serif;
+    margin-top: 19px;
+}
+
+/* .div-14 {
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 1);
+    width: 181px;
+    height: 32px;
+    margin: 18px 0 0 13px;
+} */
+
+@media (max-width: 991px) {
+    .div-14 {
+        margin-left: 10px;
+    }
+}
+
+.div-15 {
+    border-radius: 20px;
+    background-color: rgba(102, 51, 153, 1);
+    display: flex;
+    margin-top: 39px;
+    flex-direction: column;
+    padding: 28px 26px;
+}
+
+@media (max-width: 991px) {
+    .div-15 {
+        padding: 0 20px;
+    }
+}
+
+.div-16 {
+    font-family: Inter, sans-serif;
+}
+
+/* .div-17 {
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 1);
+    width: 181px;
+    height: 32px;
+    margin: 16px 0 0 13px;
+} */
+
+@media (max-width: 991px) {
+    .div-17 {
+        margin-left: 10px;
+    }
+}
+
+.div-18 {
+    font-family: Inter, sans-serif;
+    margin-top: 15px;
+}
+
+/* .div-19 {
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 1);
+    width: 181px;
+    height: 32px;
+    margin: 12px 0 0 13px;
+} */
+
+@media (max-width: 991px) {
+    .div-19 {
+        margin-left: 10px;
+    }
+}

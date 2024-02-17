@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import "./UserManagementPage.css";
-import EditUserPopup from "../EditUsePopup/EditUserPopup"; // Import the EditUserPopup component
 import axios from "axios";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 const UserManagementPage = () => {
   const [users, setUsers] = useState([]);
@@ -16,7 +17,8 @@ const UserManagementPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:3000/admin/get-users")
+    axios
+      .get("http://localhost:3000/admin/get-users")
       .then((response) => {
         setUsers(response.data.data.users);
       })
@@ -70,14 +72,16 @@ const UserManagementPage = () => {
 
   var handleDeleteUser = (user) => {
     setUserToDelete(user);
-    
+    setShowDeleteConfirmation(true); // Show the delete confirmation popup
+  };
+  
+  var confirmDelete = () => {
     // Make a DELETE request to delete the user using the API
-
-    console.log(user.associate_id);
-    axios.delete(`http://localhost:3000/admin/delete-user/${user.associate_id}`)
+    axios
+      .delete(`http://localhost:3000/admin/delete-user/${userToDelete.associate_id}`)
       .then(() => {
         // If the request is successful, remove the user from the local state
-        setUsers((prevUsers) => prevUsers.filter((u) => u.id !== user.id));
+        setUsers((prevUsers) => prevUsers.filter((u) => u.id !== userToDelete.id));
         setShowDeleteConfirmation(false); // Close the delete confirmation popup
       })
       .catch((error) => {
@@ -86,16 +90,10 @@ const UserManagementPage = () => {
       });
   };
   
-
-  var confirmDelete = () => {
-    // Delete the user from the local state
-    setUsers((prevUsers) => prevUsers.filter((u) => u.id !== userToDelete.id));
-    setShowDeleteConfirmation(false);
-  };
-
   var cancelDelete = () => {
-    setShowDeleteConfirmation(false);
+    setShowDeleteConfirmation(false); // Close the delete confirmation popup without deleting
   };
+  
 
   // Other event handlers (handleEditUser, handleSaveUser, handleDeleteUser, etc.)
 
@@ -112,9 +110,9 @@ const UserManagementPage = () => {
           />
           <button onClick={clearSearch}>Clear</button>
         </div>
-      <div className="add-new-user-btn">
-        <Link to="./addnewuser">Add New User</Link>
-      </div>
+        <div className="add-new-user-btn">
+          <Link to="./addnewuser">Add New User</Link>
+        </div>
       </div>
       <table className="content-table">
         <thead>
@@ -123,6 +121,7 @@ const UserManagementPage = () => {
             <th>Associate ID</th>
             <th>Full Name</th>
             <th>Email</th>
+            <th>Manager Name</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -133,9 +132,14 @@ const UserManagementPage = () => {
               <td>{user.associate_id}</td>
               <td>{user.associate_name}</td>
               <td>{user.email}</td>
-              <td>
-                <button onClick={() => handleEditUser(user)}>Edit</button>
-                <button onClick={() => handleDeleteUser(user)}>Delete</button>
+              <td>{user.manager_name}</td>
+              <td className="action-column">
+                <Link to={`/admin/viewuser/${user.associate_id}`}>
+                  <VisibilityIcon />
+                </Link>
+                <button onClick={() => handleDeleteUser(user)}>
+                  <DeleteIcon />
+                </button>
               </td>
             </tr>
           ))}
@@ -148,7 +152,9 @@ const UserManagementPage = () => {
           Previous
         </button>
         {/* Render page numbers */}
-        {Array.from({ length: Math.ceil(filteredUsers.length / itemsPerPage) }).map((_, index) => (
+        {Array.from({
+          length: Math.ceil(filteredUsers.length / itemsPerPage),
+        }).map((_, index) => (
           <button
             key={index}
             onClick={() => paginate(index + 1)}
@@ -159,20 +165,14 @@ const UserManagementPage = () => {
         ))}
         <button
           onClick={nextPage}
-          disabled={currentPage === Math.ceil(filteredUsers.length / itemsPerPage)}
+          disabled={
+            currentPage === Math.ceil(filteredUsers.length / itemsPerPage)
+          }
         >
           Next
         </button>
       </div>
 
-      {/* Render edit user popup if showEditPopup is true */}
-      {showEditPopup && (
-        <EditUserPopup
-          user={selectedUser}
-          onSave={handleSaveUser}
-          onCancel={handleCancelEdit}
-        />
-      )}
       {/* Render delete confirmation popup if showDeleteConfirmation is true */}
       {showDeleteConfirmation && (
         <div className="delete-confirmation">

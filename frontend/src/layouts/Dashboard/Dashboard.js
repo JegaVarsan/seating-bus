@@ -2,7 +2,6 @@ import { makeStyles } from "@material-ui/core";
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { renderRoutes } from "react-router-config";
-
 import { NavBar } from "./components/NavBar";
 import { TopBar } from "./components/TopBar";
 
@@ -41,17 +40,17 @@ function Dashboard(props) {
   const [openNavBarMobile, setOpenNavBarMobile] = useState(false);
 
   const handleMenuClick = () => {
-      setOpenNavBarMobile(true);
+    setOpenNavBarMobile(true);
   }
   const handleMenuCloseClick = () => {
-      setOpenNavBarMobile(false);
+    setOpenNavBarMobile(false);
   }
 
   return (
     <div className={classes.root}>
-      <TopBar className={classes.topBar} openMenu = {handleMenuClick} />
+      <TopBar className={classes.topBar} openMenu={handleMenuClick} />
       <div className={classes.container}>
-        <NavBar className={classes.navBar} closeMenu = {handleMenuCloseClick} openMenu = {openNavBarMobile} />
+        {/* <NavBar className={classes.navBar} closeMenu = {handleMenuCloseClick} openMenu = {openNavBarMobile} /> */}
         <main className={classes.content}>
           {renderRoutes(route.routes, { isAuthenticated: isAuthenticated })}
         </main>

@@ -1,41 +1,40 @@
-import { colors } from '@material-ui/core';
-
 const white = '#FFFFFF';
 const black = '#000000';
+const rebeccapurple = '#663399'; // Color code for rebeccapurple
 
 const palette = {
   black,
   white,
   primary: {
     contrastText: white,
-    dark: colors.blue[900],
-    main: colors.blue[700],
-    light: colors.blue[100]
+    dark: `${rebeccapurple}D3`, // Dark shade of rebeccapurple
+    main: rebeccapurple, // Main shade of rebeccapurple
+    light: `${rebeccapurple}99` // Light shade of rebeccapurple
   },
   secondary: {
     contrastText: white,
-    dark: colors.blue[900],
-    main: colors.blue['A400'],
-    light: colors.blue['A400']
+    dark: `${rebeccapurple}D3`, // Dark shade of rebeccapurple
+    main: `${rebeccapurple}A4`, // Main shade of rebeccapurple
+    light: `${rebeccapurple}A4` // Light shade of rebeccapurple
   },
   error: {
     contrastText: white,
-    dark: colors.red[900],
-    main: colors.red[600],
-    light: colors.red[400]
+    dark: '#B00020', // Dark shade of red for error
+    main: '#FF5252', // Main shade of red for error
+    light: '#FFCDD2' // Light shade of red for error
   },
   text: {
-    primary: colors.blueGrey[900],
-    secondary: colors.blueGrey[600],
-    link: colors.blue[600]
+    primary: '#121212', // Primary text color
+    secondary: '#616161', // Secondary text color
+    link: '#FFFFFF' // Link text color
   },
-  link: colors.blue[800],
-  icon: colors.blueGrey[600],
+  link: `${rebeccapurple}80`, // Link color with alpha
+  icon: '#757575', // Icon color
   background: {
-    default: '#F4F6F8',
-    paper: white
+     default: '#F4F6F8', // Default background color
+     paper: white // Paper background color
   },
-  divider: colors.grey[200]
+  divider: '#E0E0E0' // Divider color
 };
 
 export default palette;

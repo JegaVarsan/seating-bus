@@ -1,0 +1,78 @@
+.user-booking-history {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.live-future-bookings{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #0b87f3;
+    overflow-x: scroll;
+}
+
+.past-bookings {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #ea1515;
+}
+
+
+.lf-bookings-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin: 0px;
+}
+.pb-bookings-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-y: auto;
+}
+
+.booking {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    min-width: 300px;
+}
+
+.booking:last-child {
+    margin-right: 0;
+}
+
+.booking p {
+    margin: 5px 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.booking .seat-icon {
+    background-color: #6495ed;
+    color: #fff;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+@media (max-width: 768px) {
+    .bookings-container {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .booking {
+        margin-bottom: 10px;
+        max-width: calc(50% - 10px);
+    }
+}

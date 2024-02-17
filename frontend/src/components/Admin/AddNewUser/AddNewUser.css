@@ -3,8 +3,8 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  margin-top: 50px;
-  border: 2px solid rebeccapurple;
+  margin-top: 20px;
+  border-bottom: 2px solid white;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0px 0px 20px rebeccapurple;
@@ -14,8 +14,7 @@
 }
 
 
-.add-user-page:hover
-{
+.add-user-page:hover {
   box-shadow: 0px 0px 40px rebeccapurple;
 
 }
@@ -38,16 +37,16 @@
   flex: 1;
   margin-right: 40px;
   /* Add margin to create space between columns */
-  margin-top: 40px;
+  margin-top: 20px;
   /* Add margin to move the column down */
 }
 
 .right-column {
   flex: 1;
-  margin-left: 40px;
   /* Add margin to create space between columns */
-  margin-top: 40px;
+  margin-left: 40px;
   /* Add margin to move the column down */
+  margin-top: 20px;
 }
 
 .addnewuser-group {
@@ -59,7 +58,6 @@
   padding: 12px;
   border: none;
   border-bottom: 5px solid #185299;
-  /* Green color for border */
   background-color: #fff;
   color: #333;
   font-size: 16px;
@@ -74,10 +72,14 @@
 
 .submit-row {
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
 }
 
 .submit-button {
-  width: 200px;
   padding: 10px;
   background-color: #007bff;
   color: #fff;
@@ -85,16 +87,26 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  position: relative;
-  top: 20px;
 }
 
 .submit-button:hover {
-  background-color: #0056b3;
+  background-color: #28a745;
+  box-shadow: 0px 0px 10px #28a745;
+}
+
+.cancel-button:hover {
+    box-shadow: 0px 0px 10px #dc3545;
+}
+
+.cancel-button
+{
+  background-color: #dc3545;
 }
 
 .message {
-  margin-top: 60px;
+  display:block;
+  position: relative;
+  top: -500px;
   padding: 10px;
   text-align: center;
   border-radius: 5px;
@@ -111,6 +123,49 @@
 }
 
 @media screen and (max-width: 1000px) {
+
+  .add-user-page {
+    height: 135vh;
+    width: 80%;
+    max-width: 60%;
+    min-width: 30%;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .left-column,
+  .right-column {
+    flex: none;
+    width: 100%;
+    margin: 0;
+    /* Reset margin for smaller screens */
+  }
+  .submit-row {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .submit-button {
+    width: 50%;
+    margin-bottom: 70px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+
+  .add-user-page {
+    height: 135vh;
+    width: 80%;
+    max-width: 60%;
+    min-width: 30%;
+  }
+
   .form-row {
     flex-direction: column;
   }
@@ -123,8 +178,52 @@
     /* Reset margin for smaller screens */
   }
 
+  .submit-row {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+  }
   .submit-button {
+    width: 50%;
+    margin-bottom: 70px;
+  }
+}
+
+@media screen and (min-width:200px) and (max-width: 500px) {
+
+  .add-user-page {
+    height: 135vh;
+    width: 0%;
+    max-width: 60%;
+    min-width: 500px;
+  }
+
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .left-column,
+  .right-column {
+    flex: none;
     width: 100%;
-    margin-bottom: 50px;
+    margin: 0;
+    /* Reset margin for smaller screens */
+  }
+  .submit-row {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .submit-button {
+    width: 50%;
+    margin-bottom: 70px;
   }
 }

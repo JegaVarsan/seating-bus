@@ -1,7 +1,7 @@
 import { authConstants } from "../constants";
 
-let user;
-// let user = JSON.parse(localStorage.getItem("user"));
+
+let user = JSON.parse(localStorage.getItem("user"));
 const initialState = {
   user,
   loggedIn: user ? true : false,

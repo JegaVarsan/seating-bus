@@ -1,0 +1,120 @@
+body
+{
+    height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 300%;
+    height: 50%;
+    top: 75%;
+    left: 50%;
+    background-color: #2196f3;
+    background-color: rebeccapurple;
+    border-radius: 50%;
+    transform: translateX(-50%) skew(0, -10deg);
+    animation: wave 7s ease-in-out infinite alternate;
+    -webkit-animation: wave 7s ease-in-out infinite alternate;
+    z-index: -1;
+}
+@keyframes wave {
+    from {
+        transform: translateX(-50%) skew(0, -10deg);
+    }
+    to {
+        transform: translateX(-30%) skew(10deg, 0);
+        -webkit-transform: translateX(-30%) skew(10deg, 0);
+        -moz-transform: translateX(-30%) skew(10deg, 0);
+        -ms-transform: translateX(-30%) skew(10deg, 0);
+        -o-transform: translateX(-30%) skew(10deg, 0);
+}
+}
+
+
+
+.view-user-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  flex-direction: column;
+  /* background-color: #663dff; */
+  /* background-image: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);   */
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.id-card {
+  background-image: url('./cubes.png');
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  padding: 35px;
+  border-radius: 20px; /* Add border radius for rounded corners */
+  box-shadow: 0px 10px 10px rebeccapurple;
+  background-color: white;
+}
+
+.id-card-section {
+  flex: 1;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.vup-field {
+  margin-bottom: 20px;
+}
+.vup-field label {
+font-weight: bold;
+}
+
+.readonly-vup-field input
+{
+  background-color: rgb(205, 205, 205);
+  color: white;
+}
+
+.vup-field input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid green;
+}
+
+.vup-field input:focus {
+  outline: none;
+  border-bottom: 5px solid rgb(84, 223, 25);
+}
+
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.buttons button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buttons button[type="button"]:first-child {
+  background-color: #4c87af;
+  color: white;
+}
+
+.buttons button[type="button"]:last-child {
+  background-color: #f44336;
+  color: white;
+}
+.buttons button[type="button"]:first-child:hover {
+  background-color: #4caf50;
+  box-shadow: 0px 0px 10px #4caf50;
+}
+.buttons button[type="button"]:last-child:hover {
+  background-color: #f44336;
+  box-shadow: 0px 0px 10px #f44336;
+}

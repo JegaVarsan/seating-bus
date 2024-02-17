@@ -3,32 +3,6 @@ const { hash: hashPassword, compare: comparePassword } = require('../utils/passw
 const { generate: generateToken, decode: decodeToken } = require('../utils/token');
 
 
-exports.signup = (req, res) => {
-
-    var hashpass = hashPassword(req.body.password);
-
-    var data={
-        "id":req.body.id,
-        "firstname":req.body.firstname,
-        "lastname":req.body.lastname,
-        "email":req.body.email,
-        "password":hashpass
-    }
-    User.create(data).then(data=>{
-        res.status(200).json({
-            status:"success",
-            message:"User added",
-            data:data
-        })
-    })
-    .catch((err)=>{
-        return res.status(400).json({
-            status:"failure",
-            error:err
-        })
-    })
-};
-
 exports.signin = (req, res) => {
     const {email,password:pass}=req.body;
     User.findOne({
@@ -67,4 +41,40 @@ exports.signin = (req, res) => {
             error:err.message
           })
         });
+}
+
+exports.getUser = async(req, res, next)=>{
+  try {
+      var getid=req.params.id;
+      const data =await User.findOne({
+          where:{
+              associate_id:getid
+          }
+      })
+      if(data){
+          return res.status(200).json({
+          status:"success",
+          data:{
+            "associate_id":data.associate_id,
+            "associate_name":data.associate_name,
+            "email":data.email,
+            "mobile_no":data.mobile_no,
+            "manager_id":data.manager_id,
+            "manager_name":data.manager_name
+          }
+          })
+      }
+      else{
+          return res.status(200).json({
+              status:"success",
+              data:`There is no Employee with id ${getid}`
+              })
+      }
+  } catch (err) {
+      return res.status(400).json({
+          status:"failure",
+          error:err.message
+      })
+  }
+  
 }
