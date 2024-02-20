@@ -4,6 +4,7 @@ const { hash: hashPassword, compare: comparePassword } = require('../utils/passw
 
 exports.addUser = async(req, res, next)=>{
 
+    console.log("backend"+req.body);
     var hashpass = hashPassword(req.body.password);
 
     const associate_name = req.body.associate_name;

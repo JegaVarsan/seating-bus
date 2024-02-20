@@ -146,7 +146,7 @@ const AddNewUser = () => {
             <div className="addnewuser-group">
               <input
                 type="password"
-                name="passowrd"
+                name="passrd"
                 placeholder="Enter Password"
                 onChange={handleChange}
                 required

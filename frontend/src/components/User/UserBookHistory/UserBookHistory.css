@@ -1,78 +1,128 @@
-.user-booking-history {
+[5:17 PM] Venkatraman, Sriram
+.ubh-h {
+    text-align: center;
+    margin-bottom: 20px;
+}
+ 
+.bookings-container {
+    /* border: 2px solid; */
+    /* background-color:#9381ff; */
+    /* background-color:#2b2d42; */
+    padding: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    height: 80vh;
+    justify-content: space-evenly;
 }
-
-
-.live-future-bookings{
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #0b87f3;
-    overflow-x: scroll;
-}
-
-.past-bookings {
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #ea1515;
-}
-
-
-.lf-bookings-container {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    margin: 0px;
-}
-.pb-bookings-container {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-y: auto;
-}
-
+ 
 .booking {
-    padding: 10px;
-    margin-right: 10px;
     border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #fff;
-    min-width: 300px;
+    padding: 20px;
+    border-radius: 5px;
 }
-
-.booking:last-child {
-    margin-right: 0;
-}
-
-.booking p {
-    margin: 5px 0;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.booking .seat-icon {
-    background-color: #6495ed;
-    color: #fff;
-    font-weight: bold;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+ 
+.booking-item {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    flex-direction: column;
 }
-
-@media (max-width: 768px) {
-    .bookings-container {
-        flex-wrap: wrap;
-        justify-content: flex-start;
-    }
-
-    .booking {
-        margin-bottom: 10px;
-        max-width: calc(50% - 10px);
-    }
+ 
+.booking-item .label {
+    flex: 1;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
+ 
+.booking-item .value {
+    flex: 2;
+}
+ 
+.lf-section {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    overflow-y:auto;
+    background-color:#b8b8ff;
+    height: 250px;
+    margin-bottom: 10px;
+}
+ 
+.lf-h
+{
+    color:#f8f7ff;
+    top: -10px;
+    position: relative;
+}
+.pb-h
+{
+    color:#f8f7ff;
+    top: -10px;
+    position: relative;
+}
+ 
+.lf-booking {
+    border: 1px solid #0a0a0a;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom: 10px;
+    background-color: #fdfffc;
+    border-left: 5px solid rgb(3, 248, 3);
+}
+ 
+.lf-booking:hover{
+    box-shadow: 0 0 10px #3183f0;
+    border-left: 5px solid rgb(3, 248, 3);
+    transform: scaleX(1.02); /* Scale the row horizontally */
+    cursor: pointer;
+}
+ 
+ 
+.lf-bi:hover{
+    color: rgb(243, 148, 7);
+}
+.pb-bi:hover{
+    color: rgb(243, 148, 7);
+    cursor:pointer;
+}
+ 
+ 
+.pb-section {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    overflow-y:auto;
+    height: 450px;
+    background-color: #b8b8ff;
+}
+.pb-bi .label
+{
+    color:black;
+}
+ 
+.pb-booking {
+    border: 1px solid #0a0a0a;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom: 10px;
+    background-color:#dee0e0;
+    color: rgb(3, 3, 3);
+    border-left: 5px solid rgb(130, 3, 248);
+}
+ 
+.separator {
+    width: 2px;
+    height: 35px;
+    background-color: #080000;
+    margin: 5px 0;
+}
+ 

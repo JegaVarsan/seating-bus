@@ -1,11 +1,13 @@
 const {Sequelize} = require('sequelize')
 const book_seat = require('../models/seat_booking')
+const { exec } = require('child_process');
 
 exports.generate = (req,res,next)=>{
     
     try{
         var {from_date,to_date}=req.body;
         var k=new Date(from_date),j=new Date(to_date);
+        console.log(k+" "+j);
         while(k<=j){
             for(let i=1;i<=160;i++){
                 var seat_no=i.toString();
@@ -40,7 +42,7 @@ exports.generate = (req,res,next)=>{
 }
 
 exports.get_seat_info=(req,res,next)=>{
-    
+
     const date=new Date(req.params.date);
     book_seat.findAll({
         where:{
@@ -89,4 +91,76 @@ exports.block_seats=(req,res,next)=>{
             error:err
         })
     }
+}
+
+exports.unblock_seats=(req,res,next)=>{
+    try{
+        const {date,seat_numbers}= req.body
+        for(let i=0;i<seat_numbers.length;i++){
+            book_seat.findOne({
+                where:{
+                    seat_selection_date:date,
+                    seat_number:seat_numbers[i]
+                }
+            })
+            .then((val)=>{
+                val.seat_status=1;
+                val.save();
+            })  
+        }
+        res.status(200).json({
+            status:"success",
+            message:"Seat is successfully unblocked by the admin"
+        })
+    }
+    catch(err){
+        res.status(400).json({
+            status:"ailure",
+            message:"Failed in blocking the seat",
+            error:err
+        })
+    }
+}
+
+exports.delete_seats=(req,res,next)=>{
+    
+        book_seat.destroy({
+            where: {
+                seat_selection_date: req.body.date
+            }
+        })
+        .then((val)=>{
+            res.status(200).json({
+                status:"success",
+                message:`On ${req.body.date}, seats were removed.`,
+                data:val
+            })
+        })
+        .catch((err)=>{
+            res.status(400).json({
+                status:"failure",
+                message:`Deletion of seats on ${req.body.date} is not successful`,
+                err:err.message
+            })
+        })
+    
+    // book_seat.findAll({
+    //     where:{
+    //         seat_selection_date:req.body.date
+    //     }
+    // })
+    // .then((val)=>{
+    //     val.destroy();
+    //     res.status(200).json({
+    //         status:"success",
+    //         message:`On ${req.body.date}, seats were removed.`
+    //     })
+    // })
+    // .catch((err)=>{
+    //     res.status(400).json({
+    //         status:"failure",
+    //         message:`Deletion of seats on ${req.body.date} is not successful`,
+    //         err:err.message
+    //     })
+    // })
 }

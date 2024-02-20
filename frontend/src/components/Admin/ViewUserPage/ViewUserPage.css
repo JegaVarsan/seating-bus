@@ -3,7 +3,7 @@ body
     height: 100vh;
 }
 
-body::before {
+/* body::before {
     content: "";
     position: fixed;
     width: 300%;
@@ -17,7 +17,7 @@ body::before {
     animation: wave 7s ease-in-out infinite alternate;
     -webkit-animation: wave 7s ease-in-out infinite alternate;
     z-index: -1;
-}
+} */
 @keyframes wave {
     from {
         transform: translateX(-50%) skew(0, -10deg);

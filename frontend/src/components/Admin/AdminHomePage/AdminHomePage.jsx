@@ -1,11 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import "./AdminHomePage.css";
 
 const scrollToSection = (id) => {
     const section = document.getElementById(id);
     section.scrollIntoView({ behavior: "smooth" });
 };
+
+const generate_FOW_table=async()=>{
+    try{
+        var json_body={
+        "from_date":document.getElementById('date-checkin').value,
+        "to_date":document.getElementById('date-checkout').value,
+        }
+        const response=await axios.post('http://localhost:3000/generate_seat',json_body);
+        console.log(response.data);
+        alert("Seat generation is success!!!");
+        window.location.reload();
+    }
+    catch(err){
+        console.log("Error in generate FOW table")
+        console.log(err);
+    }
+}
+
+
 
 const HeroSection = () => {
     return (
@@ -15,6 +35,7 @@ const HeroSection = () => {
                 <p className="adminhome-hero-subtitle">
                     Make seat reservations simple and straightforward.
                 </p>
+                
                 <div className="adminhome-hero-buttons">
                     <button
                         onClick={() => scrollToSection("manage-booking")}
@@ -63,7 +84,7 @@ const AdminHomePage = () => {
                                     <input type="date" id="date-checkout" class="date-field" name="" />
                                 </div>
                                 <div class="button-container">
-                                    <span class="button ok">Open Booking</span>
+                                    <span class="button ok" onClick={generate_FOW_table}>Open Booking</span>
                                 </div>
                             </div>
                         </div>

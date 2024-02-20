@@ -16,5 +16,9 @@ router.route('/signin')
 router.route('/get-user/:id')
 .get(authController.getUser);
 
+router.route('/bookseat').post(authController.bookseat);
+
+router.route('/cancelseat').post(authController.cancelseat);
+
 
 module.exports = router;

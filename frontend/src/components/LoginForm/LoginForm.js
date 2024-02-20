@@ -72,6 +72,7 @@ function LoginForm(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log("pass"+formState.values.password)
     login(formState.values.email, formState.values.password);
   };
 

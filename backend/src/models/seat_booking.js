@@ -12,7 +12,7 @@ const BookSeat = sequelize.define('book_seat',{
     },
     seat_selection_date:Sequelize.DATEONLY,
     booked_for_id:{
-        type:Sequelize.STRING,
+        type:Sequelize.INTEGER,
         default:null
     },
     booked_for_name:{

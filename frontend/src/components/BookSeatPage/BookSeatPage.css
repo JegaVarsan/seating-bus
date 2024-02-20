@@ -15,7 +15,7 @@
 
 input[type="text"],
 input[type="email"] {
-  width: calc(100% - 10px); /* Adjust for input padding */
+  /* width: calc(100% - 10px); Adjust for input padding */
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;

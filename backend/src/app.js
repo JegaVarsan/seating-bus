@@ -17,6 +17,8 @@ const seat_info_route= require('./routes/seats_info.route')
 
 const generate_seat_route=require('./routes/generate_seat.route')
 
+const associatesinfo = require('./routes/associatesinfo.route');
+
 const { httpLogStream } = require('./utils/logger');
 
 //Database
@@ -55,10 +57,11 @@ next();
 });
 
 app.use('/admin',adminRoute)
-// app.use(bookSeatRoute);
+app.use('/seat',bookSeatRoute);
 app.use('/api/auth', authRoute);
 app.use('/seats_info',seat_info_route);
 app.use('/generate_seat',generate_seat_route);
+app.use('/associates',associatesinfo);
 
 
 app.get('/', (req, res) => {

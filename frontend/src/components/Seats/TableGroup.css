@@ -1,0 +1,49 @@
+.orchid-rect-icon,
+.thistle-rect-icon {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  max-height: 100%;
+  width: 216px;
+}
+.orchid-rect-icon {
+  left: 436px;
+}
+.orchid {
+  position: absolute;
+  top: 150px;
+  left: 496px;
+  font-weight: 800;
+}
+.iris-rect-icon {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 218px;
+  max-height: 100%;
+  width: 216px;
+}
+.iris,
+.thistle {
+  position: absolute;
+  top: 150px;
+  left: 297px;
+  font-weight: 800;
+}
+.thistle {
+  left: 59px;
+}
+.table-group19 {
+  position: absolute;
+  top: 233px;
+  left: 662px;
+  width: 652px;
+  height: 291px;
+  text-align: left;
+  font-size: var(--font-size-5xl);
+  color: var(--color-black);
+  font-family: var(--font-inter);
+}
