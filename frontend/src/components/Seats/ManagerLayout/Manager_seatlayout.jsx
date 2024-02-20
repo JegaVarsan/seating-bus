@@ -4,6 +4,7 @@ import "./Manager_seatlayout.css";
 import React, { useState, useEffect, useRef } from 'react';
 import { Tooltip } from '@material-ui/core';
 import axios from "axios";
+import { useLocation } from 'react-router-dom';
 
 
 import seatup from './public/seat-53@2x.png'
@@ -18,8 +19,11 @@ var associate_info=[]
 
 
 const Manager_seatlayout = () => {
+
+    const location = useLocation();
     
-    const [date,setdate]=useState("2024-02-16")
+    
+    const [date,setdate]=useState(location.state.date)
     const [seat_info,set_seat_info]=useState();
     const [loading,setloading]=useState(true);
     const [seat_status,set_seat_status] =useState([]);

@@ -121,3 +121,46 @@ exports.unblock_seats=(req,res,next)=>{
         })
     }
 }
+
+exports.delete_seats=(req,res,next)=>{
+    
+        book_seat.destroy({
+            where: {
+                seat_selection_date: req.body.date
+            }
+        })
+        .then((val)=>{
+            res.status(200).json({
+                status:"success",
+                message:`On ${req.body.date}, seats were removed.`,
+                data:val
+            })
+        })
+        .catch((err)=>{
+            res.status(400).json({
+                status:"failure",
+                message:`Deletion of seats on ${req.body.date} is not successful`,
+                err:err.message
+            })
+        })
+    
+    // book_seat.findAll({
+    //     where:{
+    //         seat_selection_date:req.body.date
+    //     }
+    // })
+    // .then((val)=>{
+    //     val.destroy();
+    //     res.status(200).json({
+    //         status:"success",
+    //         message:`On ${req.body.date}, seats were removed.`
+    //     })
+    // })
+    // .catch((err)=>{
+    //     res.status(400).json({
+    //         status:"failure",
+    //         message:`Deletion of seats on ${req.body.date} is not successful`,
+    //         err:err.message
+    //     })
+    // })
+}
