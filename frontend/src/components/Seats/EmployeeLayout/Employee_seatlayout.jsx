@@ -132,6 +132,16 @@ const Employee_seatlayout = () => {
 
   const bookseat = async () => {
     try {
+
+      var is_already_booked = await axios.post('http://localhost:3000/seat/is-already-booked', {
+        "date": date,
+        "seat_number": employee_seat.slice(0, 3) + employee_seat.slice(-3),
+      });
+      if (is_already_booked.data.message == "The seat is already booked") {
+        alert("The seat is already booked");
+        return;
+      }
+
       if (!employee_seat) alert('Please select a seat to book');
       else {
         var json_body = {

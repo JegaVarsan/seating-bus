@@ -714,7 +714,7 @@ const Manager_seatlayout = () => {
 
     // return;
 
-    selectedseat.forEach((element) => {
+    selectedseat.forEach(async (element) => {
       const seat_number_str = changenumbertoseat(element);
       let id = -1;
       associate_info.forEach((i) => {
@@ -735,16 +735,26 @@ const Manager_seatlayout = () => {
         seat_booked_by: trim_manager_name(localStorage.getItem("user")),
       };
 
-      axios
-        .post("http://localhost:3000/api/auth/bookseat", json)
+      var is_already_booked = await axios.post('http://localhost:3000/seat/is-already-booked', {
+        "date": date,
+        "seat_number": seat_number_str,
+      });
+      if (is_already_booked.data.message == "The seat is already booked") {
+        alert(`The seat ${seat_number_str} is already booked`);
+      }
+      else {
+        axios
+          .post("http://localhost:3000/api/auth/bookseat", json)
 
-        .then((response) => {
-          console.log(response.data);
-        })
+          .then((response) => {
+            console.log(response.data);
+          })
 
-        .catch((err) => {
-          console.log(err);
-        });
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+
 
       //  triggerToast("Seat booked successfully!"); // Trigger toast message on successful booking
     });

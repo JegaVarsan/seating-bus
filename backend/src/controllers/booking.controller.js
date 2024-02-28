@@ -155,3 +155,37 @@ exports.is_date_available=(req,res,next)=>{
         })
     })
 }
+
+exports.is_already_booked=(req,res,next)=>{
+    console.log(req.body);
+    const date=req.body.date;
+    const seat_number=req.body.seat_number;
+    
+    seat_book.findOne({
+        where:{
+            seat_selection_date:date,
+            seat_number:seat_number
+        }
+    })
+    .then((data)=>{
+        console.log(data);
+        if(data.dataValues.seat_status!=1){
+            res.status(200).send({
+                status:"success",
+                message:"The seat is already booked"
+            })
+        }
+        else{
+            res.status(200).send({
+                status:"success",
+                message:"The seat is available"
+            })
+        }
+    })
+    .catch((err)=>{
+        res.status(400).json({
+            status:"failure",
+            message:err.message,
+        })
+    })
+}
