@@ -1,6 +1,11 @@
 .ubh-h {
     text-align: center;
     margin-bottom: 20px;
+    color: rebeccapurple;
+    text-decoration: underline;
+    font-weight: 400;
+    margin-top: 10px;
+    font-family: sans-serif;
 }
 
 .bookings-container {
@@ -12,6 +17,9 @@
     flex-direction: column;
     height: 100vh;
     justify-content: space-between;
+    font-family: sans-serif;
+    position: relative;
+    top: -20px;
 }
 
 .booking {
@@ -29,26 +37,44 @@
     background-color: #b8b8ff;
     height: 450px;
     margin-bottom: 10px;
+    font-family: sans-serif;
+    font-weight: 400;
 }
 
 .lf-h {
     color: #f8f7ff;
-    top: -10px;
+    top: -5px;
     position: relative;
+    font-family: sans-serif;
+    font-weight: 600;
 }
 
 .pb-h {
     color: #f8f7ff;
-    top: -10px;
+    top: -5px;
     position: relative;
+    font-family: sans-serif;
+    font-weight: 600;
 }
+
 .cb-h {
     color: #f8f7ff;
-    top: -10px;
+    top: -5px;
     position: relative;
+    font-family: sans-serif;
+    font-weight: 600;
 }
 
+.cancelseat-btn {
+    background-color: red;
+    transition: 0.1s ease-in;
+}
 
+.cancelseat-btn:hover {
+    background-color: white;
+    border: red;
+    color: red;
+}
 
 .pb-section {
     border: 1px solid #ccc;
@@ -59,7 +85,10 @@
     background-color: #b8b8ff;
     margin-bottom: 20px;
     margin-top: 20px;
+    font-family: sans-serif;
+    font-weight: 400;
 }
+
 .cb-section {
     border: 1px solid #ccc;
     padding: 20px;
@@ -67,6 +96,8 @@
     overflow-y: auto;
     height: 450px;
     background-color: #b8b8ff;
+    font-family: sans-serif;
+    font-weight: 400;
 }
 
 
@@ -93,10 +124,12 @@
 .cb-table th,
 .pb-table th {
     background-color: #f2f2f2;
-    padding: 8px;
+    padding: 7px;
     text-align: center;
     border-bottom: 1px solid #ddd;
     position: sticky;
+    font-family: sans-serif;
+    font-weight: 500;
 }
 
 .lf-table td,
@@ -105,11 +138,12 @@
     padding: 8px;
     border-bottom: 1px solid #ddd;
     text-align: center;
+    font-size: 15px;
 }
 
 
 .lf-table tbody tr:last-of-type {
-    border-bottom: 2px solid rgb(113, 47, 145);
+    border-bottom: 2px solid rgb(149, 93, 177);
 }
 
 .pb-table tbody tr:last-of-type {
@@ -132,6 +166,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .popup {
     background-color: white;
     padding: 20px;
@@ -140,7 +175,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 50vh;
+    height:auto;
+    font-family: sans-serif;
 }
 
 .popup input[type="radio"]+label {
@@ -150,17 +186,14 @@
     border-radius: 5px;
     background-color: #f0f0f0;
     color: #333;
+    font-weight: 500;
     margin-bottom: 5px;
     margin-left: 10px;
 }
 
 .popup input[type="radio"]:checked+label {
     background-color: rebeccapurple;
-    /* Change background color for selected option */
     color: white;
-    /* Change text color for selected option */
-    border: 5px solid #54088e;
-    /* Add border for selected option */
 }
 
 .popup input[type="radio"]:not(:checked)+label:hover {
@@ -188,17 +221,32 @@
     display: flex;
     flex-direction: row;
 }
+
 .confirm-btn {
     background-color: green;
     color: white;
+    border: 2px solid green;
     margin-right: 20px;
     margin-left: 20px;
+}
+
+.confirm-btn:hover {
+    background-color: white;
+    border: 2px solid green;
+    color: green;
 }
 
 .cancel-btn {
     background-color: red;
     color: white;
-    margin-left: 50px;
+    border: 2px solid red;
+    margin-left: 40px;
+}
+.cancel-btn:hover {
+    background-color:white;
+    color: red;
+    border: 2px solid red;
+
 }
 
 .toast-message {

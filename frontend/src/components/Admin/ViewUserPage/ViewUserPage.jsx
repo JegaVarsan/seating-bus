@@ -80,7 +80,7 @@ const ViewUserPage = ({ onSave, onCancel }) => {
         console.error("Error updating user data:", error);
       })
       .finally(() => {
-        triggerToast("User Added successfully!");
+        triggerToast("User Details Updated Successfully!");
         // history.push('/admin/usermanagement');
       });
   };

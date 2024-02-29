@@ -1,8 +1,4 @@
 node_modules/
 combined.log
 errors.log
-<<<<<<< HEAD
 https_logs.log
-=======
-http_logs.log
->>>>>>> 953d5c2758fa80a42f66eeb37d0c7718c4c44edf

@@ -7,7 +7,9 @@ const {
     DB_USER,
     DB_PASS,
     DB_NAME,
-    JWT_SECRET_KEY
+    JWT_SECRET_KEY,
+    MAIL_SERVER_USER_NAME,
+    MAIL_SERVER_USER_PASSWORD
 } = process.env;
 
 const requiredCredentials = [
@@ -30,5 +32,7 @@ module.exports = {
     DB_USER,
     DB_PASS,
     DB_NAME,
-    JWT_SECRET_KEY
+    JWT_SECRET_KEY,
+    MAIL_SERVER_USER_NAME,
+    MAIL_SERVER_USER_PASSWORD
 };

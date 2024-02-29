@@ -26,7 +26,7 @@
     color: #fff;
     z-index: 2;
     position: relative;
-    top:0px;
+    top: 0px;
     /* Ensure the content is on top of the overlay */
 }
 
@@ -43,37 +43,49 @@
     animation: fadeInUp 1s ease-in-out 0.5s;
 }
 
-.adminhome-hero-buttons
-{
+.adminhome-hero-buttons {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
-.AdminHomePage-btn-1 {
-    background-color: rebeccapurple;
-    padding: 10px 20px;
-    font-size: 1.3em;
-    margin-top: 30px;
-}
-
-.AdminHomePage-btn-1:hover {
-    background-color: rgb(9, 34, 88);
-    box-shadow: 0px 10px 10px rgb(51, 111, 241);
-}
 
 .AdminHomePage-btn-2 {
     background-color: rebeccapurple;
-    padding: 10px 40px;
-    border-radius: 4px;
-    font-size: 1.3em;
+    padding: 9px 20px;
+    font-size: 1.1em;
     margin-top: 30px;
+    border: 3px solid rebeccapurple;
     color: white;
+    font-weight: 500;
 }
 
 .AdminHomePage-btn-2:hover {
-    background-color: rgb(9, 34, 88);
-    box-shadow: 0px 10px 10px rgb(51, 111, 241);
+    background-color: white;
+    color: rebeccapurple;
+    border: 3px solid rebeccapurple;
+}
+
+.AdminHomePage-gr-btn {
+    background-color: rebeccapurple;
+    padding: 9px 15px;
+    font-size: 1.1em;
+    margin-top: 30px;
+    border: 3px solid rebeccapurple;
+    color: white;
+    font-weight: 500;
+}
+
+.AdminHomePage-gr-btn:hover {
+    background-color: white;
+    color: rebeccapurple;
+    border: 3px solid rebeccapurple;
+}
+
+.admin-date-picker {
+    padding: 12px 20px;
+    /* border-radius: 4px; */
+    margin-right: 10px;
 }
 
 
@@ -532,7 +544,7 @@
 .section-title {
     margin-top: 10px;
     text-decoration: underline;
-    color:#09f;
+    color: #09f;
 }
 
 /* BUTTON CONTAINER */
@@ -726,4 +738,19 @@
 
 .test.small svg {
     rotate: 90deg;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .adminhome-hero-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        left: 0%;
+    }
+
+    .adminhome-hero-buttons input {
+        margin-bottom: 20px;
+    }
 }

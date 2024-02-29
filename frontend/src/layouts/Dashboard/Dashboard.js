@@ -5,6 +5,7 @@ import { renderRoutes } from "react-router-config";
 import { Link, useLocation } from "react-router-dom";
 import { Home, Apps as AppsIcon, PeopleAlt as PeopleAltIcon, EventSeat as EventSeatIcon } from "@material-ui/icons";
 import { TopBar } from "./components/TopBar";
+import EventIcon from '@material-ui/icons/Event';
 import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import axios from "axios";
@@ -99,61 +100,67 @@ function Dashboard(props) {
         console.log(err);
       })
 
-  const sidebarLinks = [
-    { to: "/", text: "Home", icon: <Home /> },
-    { to: "/userprofile", text: "Profile", icon: <AssignmentIndIcon /> },
-    { to: "/admin/usermanagement", text: "Admin UserMangement", icon: <PeopleAltIcon /> },
-    { to: "/userbookhistory", text: "Book Your Seat", icon: <EventSeatIcon /> },
-    { to: "/auth/login", text: "Logout", icon: <ExitToAppIcon />, onClick: handleLogout },
-  ];
-
-  return (
-    <div className={classes.root}>
-      {role=="admin" ? (
-<AdminTopBar className={classes.topBar} openMenu={handleMenuClick} /> 
-      ) : (
-<TopBar className={classes.topBar} openMenu={handleMenuClick} /> 
-      )}
-      {/* <TopBar className={classes.topBar} openMenu={handleMenuClick} /> */}
-      <nav className={classes.drawer}>
-        <Hidden lgUp implementation="css">
-          <Drawer
-            variant="temporary"
-            anchor="left"
-            open={openNavBarMobile}
-            onClose={handleMenuCloseClick}
-            classes={{
-              paper: classes.drawerPaper,
-            }}
-            ModalProps={{
-              keepMounted: true,
-            }}
-          >
-            <List>
-              {sidebarLinks.map((link, index) => (
-                <ListItem
-                  button
-                  key={index}
-                  component={Link}
-                  to={link.to}
-                  className={`${classes.listItem} ${classes.listItemHover} ${location.pathname === link.to && classes.activeListItem
-                    }`}
-                >
-                  <ListItemIcon>{link.icon}</ListItemIcon>
-                  <ListItemText primary={link.text} />
-                </ListItem>
-              ))}
-            </List>
-          </Drawer>
-        </Hidden>
-      </nav>
-      <div className={classes.container}>
-        <main className={classes.content}>
-          {renderRoutes(route.routes, { isAuthenticated })}
-        </main>
-      </div>
-    </div>
-  );
+      const adminLinks = [
+        { to: "/", text: "Home", icon: <Home /> },
+        { to: "/userprofile", text: "Profile", icon: <AssignmentIndIcon /> },
+        { to: "/admin/usermanagement", text: "Admin UserMangement", icon: <PeopleAltIcon /> },
+        { to: "/adminmanagebooking", text: "Manage FOW", icon: <EventIcon /> },
+        { to: "/auth/login", text: "Logout", icon: <ExitToAppIcon />, onClick: handleLogout },
+      ];
+      
+      const managerEmployeeLinks = [
+        { to: "/", text: "Home", icon: <Home /> },
+        { to: "/userprofile", text: "Profile", icon: <AssignmentIndIcon /> },
+        { to: "/userbookhistory", text: "Book Your Seat", icon: <EventSeatIcon /> },
+        { to: "/auth/login", text: "Logout", icon: <ExitToAppIcon />, onClick: handleLogout },
+      ];
+      
+      return (
+        <div className={classes.root}>
+          {role === "admin" ? (
+            <AdminTopBar className={classes.topBar} openMenu={handleMenuClick} />
+          ) : (
+            <TopBar className={classes.topBar} openMenu={handleMenuClick} />
+          )}
+          <nav className={classes.drawer}>
+            <Hidden lgUp implementation="css">
+              <Drawer
+                variant="temporary"
+                anchor="left"
+                open={openNavBarMobile}
+                onClose={handleMenuCloseClick}
+                classes={{
+                  paper: classes.drawerPaper,
+                }}
+                ModalProps={{
+                  keepMounted: true,
+                }}
+              >
+                <List>
+                  {(role === "admin" ? adminLinks : managerEmployeeLinks).map((link, index) => (
+                    <ListItem
+                      button
+                      key={index}
+                      component={Link}
+                      to={link.to}
+                      className={`${classes.listItem} ${classes.listItemHover} ${location.pathname === link.to && classes.activeListItem}`}
+                    >
+                      <ListItemIcon>{link.icon}</ListItemIcon>
+                      <ListItemText primary={link.text} />
+                    </ListItem>
+                  ))}
+                </List>
+              </Drawer>
+            </Hidden>
+          </nav>
+          <div className={classes.container}>
+            <main className={classes.content}>
+              {renderRoutes(route.routes, { isAuthenticated })}
+            </main>
+          </div>
+        </div>
+      );
+      
 }
 
 const mapStateToProps = (state) => {

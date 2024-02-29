@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 import { AppBar, Hidden, IconButton, makeStyles, Menu, MenuItem, Toolbar, Typography, Tooltip } from "@material-ui/core";
 import clsx from "clsx";
 import MenuIcon from "@material-ui/icons/Menu";
-import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
-import EventIcon from '@material-ui/icons/Event';
 import BookIcon from '@material-ui/icons/Book';
 import HomeIcon from '@material-ui/icons/Home';
 import { useSelector } from "react-redux";

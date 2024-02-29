@@ -6,13 +6,16 @@ import axios from "axios";
 import { useLocation } from 'react-router-dom';
 import ToastMessage from '../ToastMessage'; // Import Toast Message 
 import { useHistory } from "react-router-dom";
-
 import seatup from './public/seat-53@2x.png'
 import seatup_imagehover from './public/armchair-3-1@2x.png'
 import seatup_imageselect from './public/armchair-5-1@2x.png'
 import onbookedseat from './public/bkd_chair.png'
 import onblockedseat from './public/armchair-7-1@2x.png'
+import TrendingFlatIcon from '@material-ui/icons/TrendingFlat';
 
+import {getDate} from '../../../utils/getDate'
+
+import { Link } from "react-router-dom";
 var seat_booked_by = [];
 
 for (let k = 0; k < 161; k++) {
@@ -38,12 +41,8 @@ const Employee_seatlayout = () => {
       // window.location.reload(); // Refresh the page after 3 seconds
     }, 1000);
   };
-
-
   const token = localStorage.getItem("jwt_token");
   const location = useLocation();
-
-
   const [date, setdate] = useState(location.state.selecteddate)
   const [seat_info, set_seat_info] = useState();
   const [loading, setloading] = useState(true);
@@ -154,7 +153,10 @@ const Employee_seatlayout = () => {
         var response = await axios.post('http://localhost:3000/api/auth/bookseat', json_body);
         triggerToast("Seat booked successfully!"); // Trigger toast message on successful booking
         setSeatBooked(true);
-        // console.log(response.data.data);
+        console.log("Booking details :" + JSON.stringify(response.data.data));
+        if (response) {
+          var response = await axios.post('http://localhost:3000/booking-success', response.data.data);
+        }
         // console.log(response.data.message);
         // window.location.reload()
       }
@@ -407,15 +409,45 @@ const Employee_seatlayout = () => {
   return (
     <>
       {showToast && <ToastMessage message={toastMessage} />}
-      <h1><center>Associate seat booking for /{date}/</center></h1>
+      <h1 className="date-infoh1"><center>Associate seat booking for the date of - {getDate(date)}</center></h1>
+      {/* <h1 className="date-infoh1">
+        <center>Associate seat booking for the date of <span className="date-highlight">{date}</span></center>
+      </h1> */}
+      <div className="manager-seat-legends">
+        <div className="seatgreen">
+          <div>
+            <label>Selected Seat</label>
+            <TrendingFlatIcon className="arrow-icon-red" />
+            <img src={seatup_imageselect} alt="" />
+          </div>
+        </div>
+
+        <div className="seatyellow">
+          <div>
+            <label>Blocked Seat</label>
+            <TrendingFlatIcon className="arrow-icon-red" />
+            <img src={onblockedseat} alt="" />
+          </div>
+        </div>
+
+        <div className="seatred">
+          <div>
+            <label>Booked Seat </label>
+            <TrendingFlatIcon className="arrow-icon-red" />
+            <img src={onbookedseat} alt="" />
+          </div>
+        </div>
+      </div>
+
       {alreadybooked ? (
         <div className="emp-message-container">
           <h1 className="emp-message-title">You have already booked a seat {alreadybooked} on {date}</h1>
-          <h1 className="emp-message-title">Visit My Bookings to Cancel Booking</h1>
+          <h1 className="emp-message-title">Visit <Link to="/userbookhistory" className="my-bookings">My Bookings</Link> to cancel booking</h1>
           {/* <button className="emp-message-button" onClick={cancelbooking}>Cancel Seat</button> */}
         </div>
       )
         : <button onClick={bookseat} className="empseat-book-button" disabled={!employee_seat}>Book Seat</button>}
+
 
       <div className="admin-zoom-control">
         <button onClick={handleZoomIn}>+</button> {/* Zoom In */}
@@ -428,7 +460,7 @@ const Employee_seatlayout = () => {
           ) : (
             <>
 
-              <div className="manager-legends">
+              {/* <div className="manager-legends">
                 <div className="seatgreen">
                   <label>Selected Seat</label>
                   <img src={seatup_imageselect} alt="" />
@@ -440,9 +472,8 @@ const Employee_seatlayout = () => {
                 <div className="seatred">
                   <label>Blocked Seat</label>
                   <img src={onbookedseat} alt="" />
-
                 </div>
-              </div>
+              </div> */}
 
               <TableGroup />
 

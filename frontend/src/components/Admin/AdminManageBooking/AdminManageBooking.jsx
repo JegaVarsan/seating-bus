@@ -77,9 +77,9 @@ const AdminManageBooking = () => {
                                     min={today} // Set min attribute to disable past dates
                                 />
                             </div>
-                            <div className="button-container">
-                                <span className="button ok" onClick={generate_FOW_table}>Open Booking</span>
-                            </div>
+                        </div>
+                        <div className="button-container">
+                            <span className="button ok" onClick={generate_FOW_table}>Open Booking</span>
                         </div>
                     </div>
                 </div>

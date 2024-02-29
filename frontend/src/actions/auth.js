@@ -12,7 +12,7 @@ function login(username, password) {
     dispatch(request(username));
     authService.login(username, password).then(response => {
 
-        localStorage.setItem("uid",response.data.associate_id);
+        // localStorage.setItem("uid",response.data.associate_id);
         dispatch(success({user_name:response.data.associate_name,user_email:response.data.email,user_id:response.data.associate_id}));
         const isAdmin = response.data.isAdmin;
         const isManager = response.data.isManager;

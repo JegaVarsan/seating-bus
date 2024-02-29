@@ -2963,9 +2963,7 @@ row-1 .seat-icon93,
   position: relative;
   left: 15%;
 }
-
-
-
+  
 .input-container label {
   font-weight: bold;
   color: #333;
@@ -3032,7 +3030,6 @@ row-1 .seat-icon93,
 
 .ss-disable-section {
   text-align: center;
-  color: red;
   height: 100%;
   background-color: darkgray;
 }
@@ -3040,34 +3037,96 @@ row-1 .seat-icon93,
 .dis-text {
   position: relative;
   top: 150px;
-
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
 }
 
-.manager-legends {
+.manager-seat-legends {
   display: flex;
   flex-direction: row;
-  /* border: 1px solid black; */
-  /* background-color: white; */
   color: white;
-  padding: 10px;
-  width: auto;
-  border-radius: 5px;
+  width:60%;
+  border-radius: 10px;
   align-items: center;
-  position: fixed;
-  left: 50%;
-  top: 10px;
+  position:relative;
+  border: 2px solid black;
+  left: 25%;
+  top: 50px;
   justify-content: space-evenly;
+  background-color: rebeccapurple;
+  font-size: 20px;
 }
 
-.manager-legends img {
+.manager-seat-legends img {
   rotate: 180deg;
+  height: 32px;
+  width: 32px;
+  position: relative;
+  top: -5px;
 }
 
-.seatgreen,
-.seatyellow,
-.seatred {
+.managerseat-h1
+{
+  margin: 10px;
+  color: rebeccapurple;
+  text-decoration: underline;
+}
+
+.seatgreen {
+  color:white;
   display: flex;
+  flex-direction: row;
   justify-content: space-evenly;
-  flex-direction: column;
   margin: 20px;
+  align-items: center;
+  align-self: center;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.seatyellow {
+  color:white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 20px;
+  align-items: center;
+  align-self: center;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.seatred {
+  color:white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 20px;
+  align-items: center;
+  align-self: center;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.seatred label
+{
+  position: relative;
+  top: -19px;
+}
+.seatyellow label
+{
+  position: relative;
+  top: -19px;
+}
+.seatgreen label
+{
+  position: relative;
+  top: -19px;
+}
+.seatred label
+{
+  position: relative;
+  top: -19px;
+}
+.arrow-icon-red
+{
+  position: relative;
+  top: 0px;
+  margin: 10px;
 }

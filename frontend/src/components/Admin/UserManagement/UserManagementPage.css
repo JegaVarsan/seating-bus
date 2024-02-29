@@ -1,22 +1,38 @@
 /* src/components/Admin/UserManagementPage.css */
 
-*{
-    margin: 0;
-    padding: 0;
-    border: none;
-  }
-  
-  .ump-h2{
-    margin-bottom: 20px;
-    color: rebeccapurple;
-    border-bottom:2px solid  #009879;
-  }
-  .user-management-container {
-    margin: 20px;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.ump-h2 {
+  margin-bottom: 20px;
+  color: rebeccapurple;
+  border-bottom: 2px solid #009879;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.user-management-container {
+  margin: 20px;
+}
 
 .add-new-user-btn {
-  margin-left: auto; /* Move the link to the right */
+  margin-left: auto;
+  font-size: 13px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Move the link to the right */
+}
+
+.anu-clear-btn {
+  padding: 12px 20px;
+  background-color: #6ab04c;
+}
+
+.ump-searchbar {
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
 }
 
 .add-new-user-btn a {
@@ -34,220 +50,277 @@
   box-shadow: 0px 10px 10px rebeccapurple;
 }
 
-  
-  /* src/components/Admin/UserManagementPage.css */
-  
-  .content-table {
-    border-collapse: collapse;
-    margin: 30px 0;
-    font-size: 0.9em;
-    width: 100%;
-    border-radius: 5px 5px 0 0;
-    background-color: white;
-    overflow: scroll;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    cursor: pointer;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  .content-table thead tr {
-    background-color: rgb(113,47,145);
-    color: #ffffff;
-    text-align: left;
-    font-weight: bold;
-  }
-  
-  .content-table th,
-  .content-table td {
-    padding: 12px 15px;
-  }
-  
-  .content-table tbody tr {
-    border-bottom: 1px solid #dddddd;
-  }
-  
-  
-  
-  .content-table tbody tr:last-of-type {
-    border-bottom: 2px solid rgb(113,47,145);
-  }
-  /* border-bottom: 2px solid #009879; */
-  
-  tr {
-    transition: transform 0.3s ease; /* Add transform transition */
-    padding: 0;
-    border-radius: 10px  !important; /* Apply border radius */
-  }
-  
-  tr:nth-child(even) {
-    background-color: #e4e7e592;
-    color: #93c611;
-  }
-  
-  tr:hover {
-    background-color: rgb(66,75,83);
-    color:rgb(170,187,17);
-    box-shadow: 0 0 30px rgb(113,47,145,1);
-    transform: scaleX(1.02); /* Scale the row horizontally */
-  }
-  /* tr:hover {
+
+/* src/components/Admin/UserManagementPage.css */
+
+.content-table {
+  border-collapse: collapse;
+  margin: 30px 0;
+  font-size: 0.9em;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+  background-color: white;
+  overflow: scroll;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.content-table thead tr {
+  background-color: rgb(113, 47, 145);
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid rgb(113, 47, 145);
+}
+
+/* border-bottom: 2px solid #009879; */
+
+tr {
+  transition: transform 0.3s ease;
+  /* Add transform transition */
+  padding: 0;
+  border-radius: 10px !important;
+  /* Apply border radius */
+}
+
+tr:nth-child(even) {
+  background-color: #e4e7e592;
+  color: #93c611;
+}
+
+tr:hover {
+  background-color:#424B53;
+  color: rgb(170, 187, 17);
+  box-shadow: 0 0 10px rgb(113, 47, 145, 1);
+  transform: scaleX(1.02);
+  /* Scale the row horizontally */
+}
+
+/* tr:hover {
     background-color: #324857;
     color: #fff;
     box-shadow: 0 0 20px rgb(21, 255, 243);
     transform: scaleX(1.02);
   } */
-  
 
-  .action-column {
-    display: flex;
-    align-items: center;
-    gap: 8px; /* Adjust the gap between the link and button */
+
+.action-column {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* Adjust the gap between the link and button */
+}
+
+.action-column button,
+.action-column a {
+  padding: 3px 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.action-column a {
+  background-color: rebeccapurple;
+  color: #fff;
+  position: relative;
+  text-decoration: none;
+}
+
+.action-column a:hover {
+  background-color: #0056b3;
+}
+
+.action-column button {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.action-column button:hover {
+  background-color: #c82333;
+}
+
+
+.delete-confirmation {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  animation: slideDown 0.5s ease forwards;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translate(-50%, -100%);
+    opacity: 0;
   }
-  
-  .action-column button,
-  .action-column a {
-    padding: 3px 5px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .action-column a {
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  .action-column a:hover {
-    background-color: #0056b3;
-  }
-  
-  .action-column button {
-    background-color: #dc3545;
-    color: #fff;
-  }
-  
-  .action-column button:hover {
-    background-color: #c82333;
-  }
-  
-  
-  .delete-confirmation {
-    position: fixed;
-    top: 50%;
-    left: 50%;
+
+  100% {
     transform: translate(-50%, -50%);
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    animation: slideDown 0.5s ease forwards;
+    opacity: 1;
   }
-  
-  @keyframes slideDown {
-    0% {
-      transform: translate(-50%, -100%);
-      opacity: 0;
-    }
-    100% {
-      transform: translate(-50%, -50%);
-      opacity: 1;
-    }
-  }
-  
-  .delete-confirmation p {
-    margin: 0 0 20px;
-    font-size: 18px;
-  }
-  
-  .delete-confirmation button {
-    margin-right: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #17529e;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    justify-content: space-evenly;
-    transition: background-color 0.3s ease;
-  }
-  
-  .delete-confirmation button:hover {
-    background-color: #ff0000;
-  }
-  
-  
-  .pwd-td {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* src/components/Admin/UserManagementPage.css */
-  
+}
+
+.delete-confirmation p {
+  margin: 0 0 20px;
+  font-size: 18px;
+}
+
+.delete-confirmation button {
+  margin-right: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #17529e;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  justify-content: space-evenly;
+  transition: background-color 0.3s ease;
+}
+
+.delete-confirmation button:hover {
+  background-color: #ff0000;
+}
+
+
+.pwd-td {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+/* src/components/Admin/UserManagementPage.css */
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filter-select,
+.search-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 40%;
+  margin-left: 10px;
+}
+
+.filter-select button,
+.search-container button {
+  margin-left: 10px;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination button {
+  background-color: rgb(66, 75, 83);
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+  background-color: rgb(113, 47, 145);
+}
+
+.pagination button:disabled {
+  background-color: #d3d3d3;
+  cursor: not-allowed;
+}
+
+.pagination button.active {
+  background-color: rgb(170, 187, 17);
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #c82333;
+  color: white;
+}
+
+/* RESPONSIVE CODE STARTS */
+/* For small screens (e.g., phones) */
+@media only screen and (max-width: 600px) {
   .filter-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+    flex-direction: column;
+    /* Stack items vertically */
+    align-items: flex-start;
+    /* Align items to the start */
   }
-  
-  .filter-select, .search-container {
-    display: flex;
+
+  .filter-select,
+  .search-container {
+    width: 100%;
+    /* Take up full width */
+    margin-left: 0;
+    /* Reset left margin */
+    margin-top: 10px;
+    /* Add top margin for spacing */
+  }
+
+  .add-new-user-btn {
+    margin-left: 0px;
+    margin-top: 20px;
+    /* Add margin to the Add New User button */
+  }
+}
+
+/* For medium and larger screens */
+@media only screen and (min-width: 601px) {
+  .filter-container {
     flex-direction: row;
     align-items: center;
+  }
+
+  .filter-select,
+  .search-container {
     width: 40%;
     margin-left: 10px;
   }
-    
-  .filter-select button, .search-container button {
-    margin-left: 10px;
-  }
 
-  .pagination {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .add-new-user-btn {
+    margin-left: auto;
   }
-  
-  .pagination button {
-    background-color: rgb(66, 75, 83);
-    border: none;
-    color: white;
-    padding: 8px 16px;
-    text-decoration: none;
-    cursor: pointer;
-    border-radius: 4px;
-    margin-right: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .pagination button:hover {
-    background-color: rgb(113, 47, 145);
-  }
-  
-  .pagination button:disabled {
-    background-color: #d3d3d3;
-    cursor: not-allowed;
-  }
-  
-  .pagination button.active {
-    background-color: rgb(170, 187, 17);
-  }
-  
-  button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-right: 10px;
-  }
-  
-  button:hover {
-    background-color: #c82333;
-    color: white;
-  }
+}
+
+/* RESPONSIVE CODE ENDS */

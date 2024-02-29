@@ -3,5 +3,6 @@ const associatesinfo_controller = require('../controllers/associatesinfo.control
 router.route('/get-associates/:manager_id').get(associatesinfo_controller.getAssociates);
 router.route('/get-associate/:associate_id').get(associatesinfo_controller.getAssociate);
 
-router.route('/setpass/:associate_id').post(associatesinfo_controller.setAssociatePass);
+router.route('/setpass/:jwt_token').patch(associatesinfo_controller.setAssociatePass);
+router.route('/forgotpass/:email').post(associatesinfo_controller.forgotPass);
 module.exports = router;

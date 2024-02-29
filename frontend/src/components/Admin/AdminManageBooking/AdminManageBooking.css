@@ -7,10 +7,11 @@
     background-color: white;
     border-radius: 10px;
     width: auto;
+    min-width: 500px;
     align-self: center;
     position: relative;
     top: 25%;
-    box-shadow: 0px 0px 10px #09f;
+    box-shadow: 0px 0px 10px #663399;
 }
 
 .section-managebooking h2 {
@@ -82,7 +83,7 @@
     min-width: 217px;
     height: 70px;
     padding: 5px 10px 10px 10px;
-    background: #fff;
+    /* background: #fff; */
     border-radius: 8px;
     filter: drop-shadow(0px 0px 3px #000);
     -webkit-filter: drop-shadow(0px 0px 3px #000);
@@ -107,7 +108,7 @@
     font-size: 11px;
     letter-spacing: 0.1em;
     line-height: 20px;
-    color: #09f;
+    color: #663399;
     margin-left: 2px;
     text-transform: uppercase;
     white-space: nowrap;
@@ -133,7 +134,7 @@
 .section-title {
     margin-top: 10px;
     text-decoration: underline;
-    color:#09f;
+    color:#663399;
 }
 
 /* BUTTON CONTAINER */
@@ -146,7 +147,7 @@
     height: 71px;
     padding: 1px;
     padding-bottom: 2px;
-    background: #09f;
+    background: #663399;
     border-radius: 8px;
     filter: drop-shadow(0px 0px 3px #000);
     -webkit-filter: drop-shadow(0px 0px 3px #000);
@@ -154,13 +155,14 @@
     cursor: pointer;
     position: relative;
     top: 19px;
+    margin-left: 20px;
 }
 
 .button-container:hover,
 .button-container:focus {
-    background: #09f;
-    filter: drop-shadow(0px 0px 3px #09f);
-    -webkit-filter: drop-shadow(0px 0px 3px #09f);
+    background: #663399;
+    filter: drop-shadow(0px 0px 3px #663399);
+    -webkit-filter: drop-shadow(0px 0px 3px #663399);
 }
 
 /* -- button -- */
@@ -173,11 +175,12 @@
     align-items: center;
     justify-content: center;
     border-radius: 7px;
-    background: #fff;
+    /* background: #fff; */
     color: #000;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 700;
+    
 }
 
 .button-container:hover .button:hover {
@@ -188,9 +191,9 @@
 .button-container:hover .button:active {
     background: #000;
     color: #fff;
-    background: #09f;
-    filter: drop-shadow(0px 0px 3px #09f);
-    -webkit-filter: drop-shadow(0px 0px 3px #09f);
+    background: #663399;
+    filter: drop-shadow(0px 0px 3px #663399);
+    -webkit-filter: drop-shadow(0px 0px 3px #663399);
 }
 
 /* -- button ok -- */
@@ -201,14 +204,14 @@
 
 .button-container:hover .button.ok:hover {
     background: #131313;
-    color: #09f;
-    text-shadow: 0px 0px 10px #09f;
-    -webkit-text-shadow: 0px 0px 10px #09f;
+    color: #663399;
+    text-shadow: 0px 0px 10px #663399;
+    -webkit-text-shadow: 0px 0px 10px #663399;
 }
 
 .button-container:hover .button.ok:active {
     color: #fff;
-    background: #09f;
+    background: #663399;
     filter: drop-shadow(0px 0px 3px #000);
     -webkit-filter: drop-shadow(0px 0px 3px #000);
 }
@@ -222,7 +225,7 @@
     height: 40%;
     padding: 20px;
     border-radius: 7px;
-    background-color: rgba(255, 255, 255, 1);
+    /* background-color: rgba(255, 255, 255, 1); */
     position: relative;
     top: -100px;
 }
@@ -271,7 +274,7 @@
 .reservation-box .info:focus,
 .reservation-box .info:active {
     color: #000;
-    border-bottom: 2px solid #09f;
+    border-bottom: 2px solid #663399;
 }
 
 /* RESERVATION BOX SMALL */
@@ -297,3 +300,48 @@
 .reservation-box.small .button-container {
     min-width: 217px;
 }
+
+/* RESPOSIVE CODE STARTS */
+@media screen and (max-width: 768px) {
+    /* Adjust reservation box height */
+    .reservation-box {
+        padding: 10px;
+        position: relative;
+        top:-190px;
+        min-width:50%;
+    }
+    
+    .section-managebooking
+    {
+        height: 70%;
+        width: 70%;
+        position: relative;
+        left: 15%;
+        top:10%;
+    }
+    
+    .top{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    /* Reduce height of input container */
+    .input-container {
+        height: 60px;
+        margin: 20px;
+    }
+
+    /* Adjust button container height */
+    .button-container {
+        min-height: 50px;
+        position: relative;
+        left: -10px;
+    }
+
+}
+
+/* RESPOSIVE CODE ENDS */
+
+
+

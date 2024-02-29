@@ -3,6 +3,7 @@ import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import validate from "validate.js";
+import { Link } from "react-router-dom";
 import { authActions } from "../../actions";
  
 const constraints = {
@@ -26,6 +27,14 @@ const useStyles = makeStyles((theme) => ({
     "& > *": {
       flexGrow: 1,
       margin: theme.spacing(1),
+    },
+    marginBottom:5,
+  },
+  forgotpwd: {
+    color: 'navy', 
+    textDecoration: 'underline', 
+    '&:hover': {
+      color: 'blue',
     },
   },
   submitButton: {
@@ -121,6 +130,7 @@ function LoginForm(props) {
           {auth.error.message || auth.error}
         </Typography>
       )}
+      <Link  to="/auth/forgotpwd" variant="body2" className={classes.forgotpwd}>Forgot Password?</Link>
       <Button
         variant="contained"
         type="submit"
@@ -144,4 +154,3 @@ const mapDispatchToProps = {
 };
  
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
- 

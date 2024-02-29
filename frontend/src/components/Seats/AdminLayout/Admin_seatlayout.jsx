@@ -4,6 +4,7 @@ import { Tooltip } from '@material-ui/core';
 import axios from "axios";
 import { useLocation } from 'react-router-dom';
 import ToastMessage from '../ToastMessage'; // Import Toast Message 
+import TrendingFlatIcon from '@material-ui/icons/TrendingFlat';
 import { useHistory } from "react-router-dom";
 
 import TableGroup from "../TableGroup";
@@ -13,6 +14,7 @@ import seatup_imageselect from './public/armchair-5-1@2x.png'
 import onbookedseat from './public/armchair-6-1@2x.png'
 import onblockedseat from './public/armchair-7-1@2x.png'
 
+import {getDate} from '../../../utils/getDate'
 
 var selectedseat = [];
 var selected_blockedSeat = [];
@@ -73,7 +75,7 @@ const Admin_seatlayout = () => {
       .then((data) => {
         if (data.data.message == "The seat is not generated on this date") {
           alert("The selected date does not come under FOW")
-          history.push("/home");
+          history.push("/adminhome");
         }
       })
       .catch((err) => {
@@ -164,21 +166,21 @@ const Admin_seatlayout = () => {
 
     console.log(json_body);
 
-    var response = axios.post('http://localhost:3000/generate_seat/block-seat-forguest', json_body, {
+    var response=axios.post('http://localhost:3000/generate_seat/block-seat-forguest', json_body,{
       headers: {
         Authorization: token.toString()
       }
     });
-    console.log(response);
-    triggerToast("Seat Booked for the Guest Successfully!"); // Trigger toast message
-    setShowPopup(false); // Close the popup after successful booking
-    console.log(`${sn} is blocked for guest ${guestName}`);
-    // window.location.reload(); // Refresh the page
-    // })
-    // .catch(error => {
-    //   console.error("Error blocking seat for guest:", error);
-    //   // Handle error if needed
-    // });
+        console.log(response);
+        triggerToast("Seat Booked for the Guest Successfully!"); // Trigger toast message
+        setShowPopup(false); // Close the popup after successful booking
+        console.log(`${sn} is blocked for guest ${guestName}`);
+        // window.location.reload(); // Refresh the page
+      // })
+      // .catch(error => {
+      //   console.error("Error blocking seat for guest:", error);
+      //   // Handle error if needed
+      // });
   };
 
 
@@ -545,11 +547,38 @@ const Admin_seatlayout = () => {
   return (
     <>
       {showToast && <ToastMessage message={toastMessage} />}  {/* Show toast message when state is true */}
-      <h1><center>Admin Seatlayout Page</center></h1>
+      <h1 className="admnseat-h1"><center>Admin seat management for -{getDate(date)}</center></h1>
+
       <div className="adminseat-buttons">
         <button onClick={blockSeat}>Block Seat</button>
         <button onClick={handleGuestBlock}>Book For Guest</button>
         <button onClick={unblockSeat}>UnBlock Seat</button>
+      </div>
+
+      <div className="manager-seat-legends">
+        <div className="seatgreen">
+          <div>
+            <label>Selected Seat</label>
+            <TrendingFlatIcon className="arrow-icon-red" />
+            <img src={seatup_imageselect} alt="" />
+          </div>
+        </div>
+
+        <div className="seatyellow">
+          <div>
+            <label>Blocked Seat</label>
+            <TrendingFlatIcon className="arrow-icon-red" />
+            <img src={onblockedseat} alt="" />
+          </div>
+        </div>
+
+        <div className="seatred">
+          <div>
+            <label>Booked Seat </label>
+            <TrendingFlatIcon className="arrow-icon-red" />
+            <img src={onbookedseat} alt="" />
+          </div>
+        </div>
       </div>
 
       <div className="admin-zoom-control">
@@ -563,22 +592,7 @@ const Admin_seatlayout = () => {
             <div className="loader"></div>
           ) : (
             <>
-
-              <div className="manager-legends">
-                <div className="seatgreen">
-                  <label>Selected Seat</label>
-                  <img src={seatup_imageselect} alt="" />
-                </div>
-                <div className="seatyellow">
-                  <label>Blocked by Admin</label>
-                  <img src={onblockedseat} alt="" />
-                </div>
-                <div className="seatred">
-                  <label>Booked seat</label>
-                  <img src={onbookedseat} alt="" />
-
-                </div>
-              </div>
+              
               <TableGroup />
               <SeatLeftComponent cname="seat-icon" seat_id="WKS-140" />
               <SeatLeftComponent cname="seat-icon1" seat_id="WKS-139" />

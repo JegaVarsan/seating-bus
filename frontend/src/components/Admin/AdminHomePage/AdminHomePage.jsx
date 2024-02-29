@@ -59,35 +59,17 @@ const HeroSection = ({ handleDateChange, pickedDate }) => {
                 </p>
 
                 <div className="adminhome-hero-buttons">
-                    {/* <div>
-
-                        <button
-                            onClick={() => scrollToSection("manage-booking")}
-                            className="AdminHomePage-btn-1"
-                        >
-                            Manage Booking
-                        </button>
-                    </div> */}
                     <div>
-                        <input type="date" id="date_picker" className="date-picker" value={date} selected={pickedDate} min={today} onChange={handlechange} />
+                        <input type="date" id="date_picker" className="admin-date-picker" value={date} selected={pickedDate} min={today} onChange={handlechange} />
                     </div>
                     <div>
                         <Link to={{ pathname: "/seatlayout", state: { selecteddate: date } }
                         } className="AdminHomePage-btn-2">Block Seat</Link>
                     </div>
-
                 </div>
-                {/* <div id="wrapper">
-                    <div id="wrapper-inner">
-                        <div id="scroll-down">
-                            <span className="arrow-down"></span>
-                            <span id="scroll-title">Scroll down</span>
-                        </div>
-                    </div>
-                </div> */}
-                <br></br>
+
                 <div className="reportgen-btn">
-                    <button onClick={generatereport}>Generate Report</button>
+                    <button onClick={generatereport} className="AdminHomePage-gr-btn">Generate Report</button>
                 </div>
             </div>
         </header>
@@ -111,42 +93,6 @@ const AdminHomePage = () => {
     return (
         <div className="content whole-body-AdminHomePage">
             <HeroSection handleDateChange={handleDateChange} pickedDate={pickedDate} />
-            {/* <div id="manage-booking" className="section-managebooking">
-                <h2 className="section-title">Manage Booking</h2>
-                <div className="manage-seat-datebody">
-                    <div className="reservation-box">
-                        <div className="top">
-                            <div className="static">
-                                <div className="input-container" id="date-picker-container">
-                                    <label htmlFor="date-from">check-in</label>
-                                    <input
-                                        type="date"
-                                        id="date-checkin"
-                                        className="date-field"
-                                        name="date-from"
-                                        min={today} // Set min attribute to disable past dates
-                                    />
-                                </div>
-                            </div>
-                            <div className="flex">
-                                <div className="input-container" id="date-picker-container">
-                                    <label htmlFor="date-from">check-out</label>
-                                    <input
-                                        type="date"
-                                        id="date-checkout"
-                                        className="date-field"
-                                        name="date-to"
-                                        min={today} // Set min attribute to disable past dates
-                                    />
-                                </div>
-                                <div className="button-container">
-                                    <span className="button ok" onClick={generate_FOW_table}>Open Booking</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
         </div>
     );
 };

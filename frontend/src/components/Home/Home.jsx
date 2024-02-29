@@ -1,5 +1,3 @@
-
-
 import React, { useState,useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
@@ -23,6 +21,7 @@ const HeroSection = ({ handleDateChange, pickedDate }) => {
   return (
     <header className="userhome-hero">
       <div className="userhome-hero-content">
+        
         <h1 className="userhome-hero-title">Your Comfort Awaits, Reserve Now</h1>
         <p className="userhome-hero-subtitle">
           Make seat reservations simple and straightforward.

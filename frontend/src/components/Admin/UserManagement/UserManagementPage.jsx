@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import "./UserManagementPage.css";
 import axios from "axios";
-import VisibilityIcon from "@material-ui/icons/Visibility";
+// import VisibilityIcon from "@material-ui/icons/Visibility";
+import InfoIcon from '@material-ui/icons/Info';
 import DeleteIcon from "@material-ui/icons/Delete";
 import { useHistory } from "react-router-dom";
 
@@ -143,8 +144,9 @@ const UserManagementPage = () => {
             value={searchTerm}
             onChange={handleSearch}
             placeholder="Search..."
+            className="ump-searchbar"
           />
-          <button onClick={clearSearch}>Clear</button>
+          <button onClick={clearSearch} className="anu-clear-btn">Clear</button>
         </div>
         <div className="add-new-user-btn">
           <Link to="./addnewuser">Add New User</Link>
@@ -171,7 +173,8 @@ const UserManagementPage = () => {
               <td>{user.manager_name}</td>
               <td className="action-column">
                 <Link to={`/admin/viewuser/${user.associate_id}`}>
-                  <VisibilityIcon />
+                  <InfoIcon />
+                  {/* <VisibilityIcon /> */}
                 </Link>
                 <button onClick={() => handleDeleteUser(user)}>
                   <DeleteIcon />

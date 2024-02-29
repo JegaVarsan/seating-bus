@@ -1,3 +1,9 @@
+.admnseat-h1
+{
+  color: rebeccapurple;
+  text-decoration: underline;
+}
+
 /* row-1 */
 .seat-icon93,
 .seat-icon94,
@@ -2597,7 +2603,9 @@ justify-content: space-evenly;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   z-index: 1000; /* Ensure popup is on top */
+  width: 25%;
 }
+
 
 .popup-content {
   display: flex;
@@ -2607,6 +2615,8 @@ justify-content: space-evenly;
 
 .popup-content h2 {
   margin-bottom: 20px;
+  text-decoration: underline;
+  color: rebeccapurple;
 }
 
 .popup-content input {
@@ -2619,12 +2629,12 @@ justify-content: space-evenly;
 
 .popup-content input:focus
 {
-  border: 3px solid #007bff;
+  border: 3px solid rebeccapurple;
 }
 
 .popup-content button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color:rebeccapurple;
   color: white;
   border: none;
   border-radius: 5px;

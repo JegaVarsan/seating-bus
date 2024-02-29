@@ -1,43 +1,34 @@
 
 import TableGroup from "../TableGroup";
-
 import "./Manager_seatlayout.css";
-
 import React, { useState, useEffect, useRef } from "react";
-
 import { Tooltip } from "@material-ui/core";
-
 import axios from "axios";
-
 import { useLocation } from "react-router-dom";
+import ToastMessage from '../ToastMessage'; // Import Toast Message
 import { useHistory } from "react-router-dom";
 
 // import ToastMessage from '../ToastMessage'; // Import Toast Message
 
 import seatup from "./public/seat-53@2x.png";
-
 import seatup_imagehover from "./public/armchair-3-1@2x.png";
-
 import seatup_imageselect from "./public/armchair-5-1@2x.png";
-
 import onbookedseat from "./public/armchair-6-1@2x.png";
 
+import TrendingFlatIcon from '@material-ui/icons/TrendingFlat';
 import onblockedseat from "./public/armchair-7-1@2x.png";
 
+import { getDate } from '../../../utils/getDate'
 var selectedseat = [];
-
 var selected_blockedSeat = [];
 
 const trim_manager_name = (name) => {
   let str = "";
-
   for (let i = 1; i < name.length - 1; i++) str += name[i];
-
   return str;
 };
 
 var associate_info = [];
-
 var count_selected = 0;
 var seat_booked_by = [];
 
@@ -52,41 +43,42 @@ const str_seat_to_int = (seatno) => {
 
 const Manager_seatlayout = () => {
 
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
+
+  // Function to trigger toast message
+  const triggerToast = (message) => {
+    setToastMessage(message);
+    setShowToast(true);
+    setTimeout(() => {
+      setShowToast(false);
+      setToastMessage('');
+      // window.location.reload(); // Refresh the page after 3 seconds
+    }, 1000);
+  };
+
   const history = useHistory();
   const location = useLocation();
-
   const [date, setdate] = useState(location.state.selecteddate);
-
   const [seat_info, set_seat_info] = useState();
-
   const [loading, setloading] = useState(true);
-
   const [seat_status, set_seat_status] = useState([]);
-
   const [max_seat, set_max_seat] = useState(0);
-
   const [loading_associate_details, set_loading_associate_details] =
     useState(null);
 
   var option_names = [];
-
   const bookbuttoncss = {
     padding: "10px",
-
     position: "absolute",
-
     top: "110px",
-
     left: "750px",
   };
 
   const unblock = {
     padding: "20px",
-
     position: "absolute",
-
     top: "100px",
-
     left: "1000px",
   };
 
@@ -96,7 +88,6 @@ const Manager_seatlayout = () => {
     associate_info.forEach((element) => {
       if (element.id != id) t.push(element);
     });
-
     associate_info = t;
   };
 
@@ -125,14 +116,11 @@ const Manager_seatlayout = () => {
         }
       });
     }
-
     console.log(associate_info);
-
     set_max_seat(associate_info.length);
   }, [max_seat]);
 
   useEffect(() => {
-
     axios.post("http://localhost:3000/decodejwt", {
       "jwttoken": localStorage.getItem("jwt_token"),
     })
@@ -148,33 +136,24 @@ const Manager_seatlayout = () => {
         console.log(err);
       })
 
-
-
     const fetchdata = async () => {
       try {
         const val = await axios.get(
           `http://localhost:3000/generate_seat/get-seat-info/${date}`
         );
-
         var associates = await axios.get(
           `http://localhost:3000/associates/get-associates/${localStorage.getItem(
             "id"
           )}`
         );
-
         associates = associates.data.data.users;
-
         const array = [];
-
         for (let i = 0; i < 161; i++) {
           array.push(-4);
         }
-
         val.data.datas.forEach((element) => {
           const no = parseInt(element.seat_number.match(/\d+/g)[0]);
-
           const status = element.seat_status;
-
           array[no] = status;
           seat_booked_by[no] = element.booked_for_name;
         });
@@ -182,41 +161,32 @@ const Manager_seatlayout = () => {
         associates.forEach((element) => {
           associate_info.push({
             name: element.associate_name,
-
             id: element.associate_id,
           });
         });
 
         set_seat_status(array);
-
         set_seat_info(val.data.datas);
-
         set_max_seat(associates.length);
-
         setloading(false);
       } catch (err) {
         setloading(false);
-
         console.log(err);
       }
     };
-
     fetchdata();
   }, []);
 
   const deleteSeat = (seatno) => {
     var t = [];
-
     selectedseat.forEach((element) => {
       if (element != seatno) t.push(element);
     });
-
     return t;
   };
 
   const removefromblockedseat = (seatno) => {
     var t = [];
-
     selected_blockedSeat.forEach((element) => {
       if (element != seatno) t.push(element);
     });
@@ -277,7 +247,7 @@ const Manager_seatlayout = () => {
             onClick={() => {
               if (count_selected == max_seat) {
                 alert(
-                  "You have already chosen the greatest number of seats available."
+                  "You have reached your maximum number of direct reportee"
                 );
               } else if (!selected) {
                 count_selected += 1;
@@ -347,11 +317,8 @@ const Manager_seatlayout = () => {
       );
     } else {
       const imgSrc_select = seatup_imageselect;
-
       const imgSrc_hover = seatup_imagehover;
-
       const imgsrc = selected ? imgSrc_select : hover ? imgSrc_hover : seatup;
-
       return (
         <Tooltip placement="top" title={props.seat_id} arrow>
           <img
@@ -364,20 +331,14 @@ const Manager_seatlayout = () => {
                 );
               } else if (!selected) {
                 count_selected += 1;
-
                 selectedseat.push(seat_no);
-
                 setSelected(!selected);
               } else {
                 count_selected -= 1;
-
                 selectedseat = deleteSeat(seat_no);
-
                 setSelected(!selected);
               }
-
               // console.log(selectedseat);
-
               // console.log("no of selected seats " + count_selected)
             }}
             onMouseOver={() => setHover(true)}
@@ -391,13 +352,9 @@ const Manager_seatlayout = () => {
 
   function SeatLeftComponent(props) {
     const [selected, setSelected] = React.useState(false);
-
     const [hover, setHover] = React.useState(false);
-
     // console.log("Value of key "+props.seat_id)
-
     const seat_no = parseInt(props.seat_id.match(/\d+/g)[0]);
-
     // console.log(seat_no);
 
     if (seat_status[seat_no] == 0) {
@@ -416,10 +373,8 @@ const Manager_seatlayout = () => {
         </Tooltip>
       );
     }
-
     if (seat_status[seat_no] == 2) {
       // console.log("seat-no")
-
       return (
         <Tooltip placement="top" title={props.seat_id} arrow>
           <img
@@ -431,11 +386,8 @@ const Manager_seatlayout = () => {
       );
     } else {
       const imgSrc_select = seatup_imageselect;
-
       const imgSrc_hover = seatup_imagehover;
-
       const imgsrc = selected ? imgSrc_select : hover ? imgSrc_hover : seatup;
-
       return (
         <Tooltip placement="top" title={props.seat_id} arrow>
           <img
@@ -448,20 +400,14 @@ const Manager_seatlayout = () => {
                 );
               } else if (!selected) {
                 count_selected += 1;
-
                 selectedseat.push(seat_no);
-
                 setSelected(!selected);
               } else {
                 count_selected -= 1;
-
                 selectedseat = deleteSeat(seat_no);
-
                 setSelected(!selected);
               }
-
               // console.log(selectedseat);
-
               // console.log("no of selected seats " + count_selected)
             }}
             onMouseOver={() => setHover(true)}
@@ -475,15 +421,10 @@ const Manager_seatlayout = () => {
 
   function SeatRightComponent(props) {
     const [selected, setSelected] = React.useState(false);
-
     const [hover, setHover] = React.useState(false);
-
     // console.log("Value of key "+props.seat_id)
-
     const seat_no = parseInt(props.seat_id.match(/\d+/g)[0]);
-
     // console.log(seat_no);
-
     if (seat_status[seat_no] == 0) {
       return (
         <Tooltip placement="top" title={
@@ -503,7 +444,6 @@ const Manager_seatlayout = () => {
 
     if (seat_status[seat_no] == 2) {
       // console.log("seat-no")
-
       return (
         <Tooltip placement="top" title={props.seat_id} arrow>
           <img
@@ -515,11 +455,8 @@ const Manager_seatlayout = () => {
       );
     } else {
       const imgSrc_select = seatup_imageselect;
-
       const imgSrc_hover = seatup_imagehover;
-
       const imgsrc = selected ? imgSrc_select : hover ? imgSrc_hover : seatup;
-
       return (
         <Tooltip placement="top" title={props.seat_id} arrow>
           <img
@@ -532,20 +469,14 @@ const Manager_seatlayout = () => {
                 );
               } else if (!selected) {
                 count_selected += 1;
-
                 selectedseat.push(seat_no);
-
                 setSelected(!selected);
               } else {
                 count_selected -= 1;
-
                 selectedseat = deleteSeat(seat_no);
-
                 setSelected(!selected);
               }
-
               // console.log(selectedseat);
-
               // console.log("no of selected seats " + count_selected)
             }}
             onMouseOver={() => setHover(true)}
@@ -558,32 +489,24 @@ const Manager_seatlayout = () => {
   }
 
   const [scale, setScale] = useState(1);
-
   const [minScale, setMinScale] = useState(1);
-
   const layoutRef = useRef(null);
 
   // Calculate the minimum scale factor based on the dimensions of the layout content and the container
 
   useEffect(() => {
     const layoutWidth = layoutRef.current.offsetWidth;
-
     const layoutHeight = layoutRef.current.offsetHeight;
-
     const containerWidth = layoutRef.current.parentElement.offsetWidth;
-
     const containerHeight = layoutRef.current.parentElement.offsetHeight;
-
     // Calculate both horizontal and vertical scale factors
 
     const minScaleWidth = containerWidth / layoutWidth;
-
     const minScaleHeight = containerHeight / layoutHeight;
 
     // Choose the smaller scale factor to ensure both dimensions fit within the container
 
     const calculatedMinScale = Math.min(minScaleWidth, minScaleHeight);
-
     setMinScale(calculatedMinScale);
 
     setScale(calculatedMinScale); // Initialize scale with minimum scale
@@ -595,41 +518,33 @@ const Manager_seatlayout = () => {
 
   const handleZoomOut = () => {
     setScale(scale - 0.1);
-
     // if (scale > minScale) {
-
     //   setScale(scale - 0.1);
-
     // }
   };
 
   const associatedetails = () => {
     console.log("result is " + count_selected);
-
     set_loading_associate_details(count_selected);
+
+    const outerFrame = document.querySelector('.ss-outer-frame');
+    outerFrame.scrollIntoView({ behavior: 'smooth' });
   };
 
   const changenumbertoseat = (no) => {
     let seatno = no.toString();
-
     while (seatno.length < 3) {
       seatno = "0" + seatno;
     }
-
     seatno = "WKS" + seatno;
-
     return seatno;
   };
 
   const Options = () => {
     const opt = [];
-
     console.log("Options");
-
     console.log(associate_info);
-
     console.log(option_names);
-
     for (let i = 0; i < associate_info.length; i++) {
       opt.push(
         <option value={associate_info[i].name}>{associate_info[i].name}</option>
@@ -641,38 +556,29 @@ const Manager_seatlayout = () => {
 
   const Renderinput = () => {
     const names = [];
-
     associate_info.forEach((element) => {
       names.push(element.name);
     });
 
     names.push(trim_manager_name(localStorage.getItem("user")));
-
     option_names = names;
-
     console.log("renderinput");
-
     console.log(associate_info);
-
     var divs = [];
-
     for (let i = 0; i < selectedseat.length; i++) {
       divs.push(
         <div>
           <div className="selectedseat-comp-container">
             <div className="input-container">
               <label htmlFor="seat_number">Seat Number:</label>
-
               <input
                 type="text"
                 id={changenumbertoseat(selectedseat[i])}
                 value={changenumbertoseat(selectedseat[i])}
               />
             </div>
-
             <div className="input-container">
               <label htmlFor="Associate_name">Associate Name:</label>
-
               <select id={selectedseat[i]} name="status">
                 <Options />
               </select>
@@ -681,27 +587,19 @@ const Manager_seatlayout = () => {
         </div>
       );
     }
-
     return <div>{divs}</div>;
   };
-
   // let find_associate_id_by_name=(name)=>{
-
   //   console.log(name);
-
   // }
 
-  const BookSeats = () => {
+  const BookSeats = async () => {
     let flag = true;
-
     const no_duplicates = [];
-
     selectedseat.forEach((element) => {
       if (no_duplicates.includes(document.getElementById(element).value)) {
         alert("Duplicate Associates found!!!");
-
         flag = false;
-
         return;
       } else {
         no_duplicates.push(document.getElementById(element).value);
@@ -709,11 +607,9 @@ const Manager_seatlayout = () => {
     });
 
     if (!flag) return;
-
     console.log("Success!!");
-
     // return;
-
+    var bookingsArray = [];
     selectedseat.forEach(async (element) => {
       const seat_number_str = changenumbertoseat(element);
       let id = -1;
@@ -725,13 +621,9 @@ const Manager_seatlayout = () => {
 
       var json = {
         seat_number: seat_number_str,
-
         date: date,
-
         associate_id: id,
-
         associate_name: document.getElementById(element).value,
-
         seat_booked_by: trim_manager_name(localStorage.getItem("user")),
       };
 
@@ -759,17 +651,50 @@ const Manager_seatlayout = () => {
       //  triggerToast("Seat booked successfully!"); // Trigger toast message on successful booking
     });
     alert("Seat Booking Success!!!");
+    var payload = {
+      "booked_for_date": date,
+      "booked_by": trim_manager_name(localStorage.getItem("user")),
+      "booked_by_id": localStorage.getItem("id"),
+      "bookings": bookingsArray
+    }
     window.location.reload();
+    await axios.post('http://localhost:3000/manager/booking-success', payload);
+
   };
 
   return (
     <>
-      {/* {showToast && <ToastMessage message={toastMessage} />}  Show toast message when state is true */}
+      {showToast && <ToastMessage message={toastMessage} />}
 
-      <h1>
-        <center>Manager Seatlayout Page</center>
+      <h1 className="managerseat-h1">
+        <center>Manager Seat Booking - {getDate(date)} </center>
       </h1>
 
+      <div className="manager-seat-legends">
+        <div className="seatgreen">
+          <div>
+            <label>Selected Seat</label>
+            <TrendingFlatIcon className="arrow-icon-red" />
+            <img src={seatup_imageselect} alt="" />
+          </div>
+        </div>
+
+        <div className="seatyellow">
+          <div>
+            <label>Blocked Seat</label>
+            <TrendingFlatIcon className="arrow-icon-red" />
+            <img src={onblockedseat} alt="" />
+          </div>
+        </div>
+
+        <div className="seatred">
+          <div>
+            <label>Booked Seat </label>
+            <TrendingFlatIcon className="arrow-icon-red" />
+            <img src={onbookedseat} alt="" />
+          </div>
+        </div>
+      </div>
       <button onClick={associatedetails} className="select-seat-btn">
         Confirm Seats
       </button>
@@ -789,25 +714,7 @@ const Manager_seatlayout = () => {
             <div className="loader"></div>
           ) : (
             <>
-              <div className="manager-legends">
-                <div className="seatgreen">
-                  <label>Selected Seat</label>
 
-                  <img src={seatup_imageselect} alt="" />
-                </div>
-
-                <div className="seatyellow">
-                  <label>Booked Seat</label>
-
-                  <img src={onblockedseat} alt="" />
-                </div>
-
-                <div className="seatred">
-                  <label>Blocked Seat</label>
-
-                  <img src={onbookedseat} alt="" />
-                </div>
-              </div>
 
               <TableGroup />
 
