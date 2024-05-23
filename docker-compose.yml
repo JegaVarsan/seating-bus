@@ -1,0 +1,106 @@
+# version: '3.8'
+
+# services:
+#   nodejs:
+#     platform: linux/amd64
+#     build: .
+#     ports:
+#       - "3000:3000"
+#     volumes:
+#       - ./src:/app/src
+#     networks:
+#       - app-network
+#     depends_on:
+#       - mysql
+
+#   mysql:
+#     platform: linux/amd64
+#     image: mysql:5.7
+#     restart: always
+#     environment:
+#       MYSQL_ROOT_PASSWORD: P2pug8m8Kaur
+#       MYSQL_DATABASE: seating_bus
+#     ports:
+#       - "3306:3306"
+#     networks:
+#       - app-network
+#     volumes:
+#       - mysql_data:/var/lib/mysql
+
+#   phpmyadmin:
+#     platform: linux/amd64
+#     image: phpmyadmin/phpmyadmin
+#     restart: always
+#     ports:
+#       - "8080:80"
+#     environment:
+#       PMA_HOST: mysql
+#       MYSQL_ROOT_PASSWORD: P2pug8m8Kaur
+#     networks:
+#       - app-network
+
+# networks:
+#       - app-network
+
+# volumes:
+#   mysql_data:
+
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend  # The current directory (root of the project)
+      dockerfile: Dockerfile.backend
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - mysql
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend  # The ./frontend directory
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "3005:3005"
+    networks:
+      - app-network
+
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: P2pug8m8Kaur
+      MYSQL_DATABASE: seating_bus
+    # environment:
+    #   - MYSQL_ROOT_PASSWORD=${DB_PASS}
+    #   - MYSQL_DATABASE=${DB_NAME}
+    #   - MYSQL_USER=${DB_USER}
+    #   - MYSQL_PASSWORD=${DB_PASS}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - app-network
+      
+  phpmyadmin:
+    platform: linux/amd64
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: P2pug8m8Kaur
+    networks:
+      - app-network
+
+networks:
+  app-network: {}
+
+volumes:
+  mysql_data:

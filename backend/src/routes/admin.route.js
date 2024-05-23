@@ -6,7 +6,7 @@ const checkEmail = require('../middlewares/checkEmail');
 const authUser = require('../middlewares/is-auth');
 
 const { signup: signupValidator, signin: signinValidator } = require('../validators/auth');
-router.route('/add-user').post(authUser,adminController.addUser);
+router.route('/add-user').post(adminController.addUser);
 router.route('/get-users').get(authUser,adminController.getUsers);
 router.route('/get-user/:id').get(authUser,adminController.getUser);
 router.route('/edit-user/:id').patch(authUser,adminController.editUser);

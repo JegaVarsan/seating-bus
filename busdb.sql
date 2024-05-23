@@ -2,7 +2,7 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: mysql57
+-- Host: mysql
 -- Generation Time: Feb 27, 2024 at 01:55 PM
 -- Server version: 5.7.44
 -- PHP Version: 8.2.8

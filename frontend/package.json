@@ -25,6 +25,7 @@
     "exceljs": "^4.4.0",
     "fs": "^0.0.1-security",
     "history": "^4.10.1",
+    "isomorphic-fetch": "^3.0.0",
     "os": "^0.1.2",
     "path": "^0.12.7",
     "react": "^17.0.1",
