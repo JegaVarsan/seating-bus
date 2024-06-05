@@ -1,0 +1,106 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: varsan7/seating-bus:frontend-0.0.1
+          ports:
+            - containerPort: 3005
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: varsan7/seating-bus:backend-0.0.1
+          ports:
+            - containerPort: 3000
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:latest
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: P2pug8m8Kaur
+            - name: MYSQL_DATABASE
+              value: busdb
+            - name: MYSQL_PASSWORD
+              value: P2pug8m8Kaur
+          ports:
+            - containerPort: 3306
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpmyadmin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: phpmyadmin
+  template:
+    metadata:
+      labels:
+        app: phpmyadmin
+    spec:
+      containers:
+      - name: phpmyadmin
+        image: phpmyadmin/phpmyadmin
+        ports:
+        - containerPort: 80
+        env:
+        - name: PMA_HOST
+          value: mysql  # Your MySQL service name
+        - name: PMA_USER
+          value: root
+        - name: PMA_PASSWORD
+          value: P2pug8m8Kaur
+        # volumeMounts:
+        # - name: phpmyadmin-config
+        #   mountPath: ./config.inc.php
+        #   subPath: config.inc.php
+      volumes:
+      - name: phpmyadmin-config
+        configMap:
+          name: phpmyadmin-config
+

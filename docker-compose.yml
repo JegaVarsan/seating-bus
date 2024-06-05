@@ -50,7 +50,7 @@ version: '3.8'
 services:
   backend:
     build:
-      context: ./backend  # The current directory (root of the project)
+      context: ./backend  
       dockerfile: Dockerfile.backend
     ports:
       - "3000:3000"
@@ -63,7 +63,7 @@ services:
 
   frontend:
     build:
-      context: ./frontend  # The ./frontend directory
+      context: ./frontend  
       dockerfile: Dockerfile.frontend
     ports:
       - "3005:3005"
